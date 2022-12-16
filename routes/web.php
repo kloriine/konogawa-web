@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('index');
 });
 
 Route::get('/about', function () {
@@ -32,3 +32,15 @@ Route::get('/news', function () {
 Route::get('/contact-us', function () {
     return view('contact');
 });
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->middleware('auth');

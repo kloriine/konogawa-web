@@ -42,11 +42,16 @@
     </header>
     <main>
         <div class="container">
-            <div class="row">
-                <h2 class="featurette-heading fw-normal lh-1 mt-5">Contact Us</h2>
-                <p class="lead">Should you have any question or concern, you can reach us by filling out the contact form, coming to our cafe, finding us on other social networks, or you can personal email us at: 
+            <div class="row mb-5">
+                <div>
+                    <h2 class="featurette-heading fw-normal lh-1 mt-5">Contact Us</h2>
+                    <p class="lead">Should you have any question or concern, you can reach us by filling out the contact form, coming to our cafe, finding us on other social networks, or you can personal email us at: 
                     <br><span class="fw-bold fs-4 text-primary">contact@konogawa.cafe</span></p>
-                <div class="col-lg-5 order-lg-2 mt-5">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5 order-lg-2 mb-5">
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-12">
@@ -65,11 +70,17 @@
                             </div>
                             <div class="col-12">
                                 <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control" id="subject" placeholder="Title of your message.">
+                                <input type="text" class="form-control" id="subject" placeholder="Title of your message." required>
+                                <div class="invalid-feedback">
+                                    Please give your mail a subject.
+                                </div>
                             </div>
                             <div class="col-12">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="6" placeholder="Criticism, suggestions, or questions."></textarea>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Criticism, suggestions, or questions." required></textarea>
+                                <div class="invalid-feedback">
+                                    Please type in your criticism, suggestions, or questions.
+                                </div>
                             </div>
                         </div>
                         <div class="text-center">
@@ -77,8 +88,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-5 order-lg-1 mt-5">
-                    <iframe class="d-block w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2614881793634!2d110.36572101538226!3d-7.762069179134324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59e51e14cd11%3A0xae9d182a9ed670b2!2sKonogawa%20Coffee%20%26%20Culture!5e0!3m2!1sen!2sid!4v1670935523021!5m2!1sen!2sid" style="border: 0; max-height: 450px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="col-lg-5 order-lg-1">
+                    <iframe class="d-block w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2614881793634!2d110.36572101538226!3d-7.762069179134324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59e51e14cd11%3A0xae9d182a9ed670b2!2sKonogawa%20Coffee%20%26%20Culture!5e0!3m2!1sen!2sid!4v1670935523021!5m2!1sen!2sid" style="border: 0; max-height: 500px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
