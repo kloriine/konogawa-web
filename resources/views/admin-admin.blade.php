@@ -94,7 +94,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>ahlulaziz@gmail.com</td>
+                                    <td>ahlulazizap@gmail.com</td>
                                     <td>$2a$12$S///1MpaUYu/GqWOWtBdBeEVFRoP1.00J.Kh7/mG9cxaxr92I6g76</td>
                                     <td>Ahlul</td>
                                     <td>Putra</td>
