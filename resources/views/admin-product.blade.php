@@ -86,7 +86,6 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -97,7 +96,6 @@
                                     <td>Mofu Mofu Tamago</td>
                                     <td>Soft omolette egg showered with our special mentai sauce, will guarantee you a sweet experience</td>
                                     <td>Food</td>
-                                    <td>6</td>
                                     <td>25000</td>
                                     <td>
                                         <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
@@ -109,7 +107,6 @@
                                     <td>Orenji Chikin</td>
                                     <td>Fresh chicken cooked with our OG mentai sauce, served with love and rice</td>
                                     <td>Food</td>
-                                    <td>3</td>
                                     <td>29000</td>
                                     <td>
                                         <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
