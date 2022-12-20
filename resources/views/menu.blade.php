@@ -73,13 +73,13 @@
             <div class="row mt-5">
                 <div class="col-lg-12 text-center">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary">Rice Box / ライスボックス</h2>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Kono Spicy</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Chicken Kono Spicy</span><br>
                         ( Mysterious spice, dark, and bold. You will like this! )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Teriyaki Sauce</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Chicken Teriyaki Sauce</span><br>
                         ( Spicy, like your neighbour mouth )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Honey Glazed</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Chicken Honey Glazed</span><br>
                         ( Original taste from east island, sweet yet also umami )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Salted Egg</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Chicken Salted Egg</span><br>
                         ( Honey, yes, sweet and tasty! )</p>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-0">Snack / スナック</h2>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Konoswich</span><br>
                         ( You will never experience this kind of sandwich ever in your life, buy it! )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Fureindo Potato</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Fureido Potato</span><br>
                         ( Ahh yess, simple yet also tasty, potato will never betray you )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Tempe Mendo</span><br>
                         ( Javanese fried soybean cake, Perfection )</p>
@@ -129,7 +129,7 @@
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Coffee Based / コーヒーベースー</h2>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Americano</span><br>
                         ( Hot Water, Espresso )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Café Latte</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Cafe Latte</span><br>
                         ( Milk, Espresso )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Cappucino</span><br>
                         ( Espresso, Milk )</p>
@@ -146,10 +146,13 @@
                     <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-6.jpg')}}" alt="Latte and Friends">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary">Latte and Friends / ラテと友達</h2>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Butter Scotch Latte</span><br></p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Vanilla Latte</span><br></p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Caramel Latte</span><br></p>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Latte and Friends / ラテと友達</h2>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Butter Scotch Latte</span><br>
+                        ( Espresso, Heated Fresh Milk, Butterscotch Syrup )</p>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Vanilla Latte</span><br>
+                        ( Espresso, Heated Fresh Milk, Vanilla Syrup )</p>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Caramel Latte</span><br>
+                        ( Espresso, Heated Fresh Milk, Caramel Syrup )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Mochaccino</span><br>
                         ( Espresso, Milk, Chocolate )</p>
                 </div>
@@ -187,9 +190,11 @@
                     <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/menu-9.jpg')}}" alt="Don't Spill It">
                 </div>
                 <div class="col-lg-7 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-5">Don't Spill It / こぼさないでください</h2>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Remon Tea</span><br></p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Raichi Tea</span><br></p>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-3">Don't Spill It / こぼさないでください</h2>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Remon Tea</span><br>
+                    ( Classic tea with homemade honey-lemon mixture, garnished with lemon slice )</p>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Raichi Tea</span><br>
+                    ( Classic lychee tea )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Artisan Tea</span><br></p>
                 </div>
             </div>
@@ -205,7 +210,7 @@
                     ( Special Recipe for Sweet Tooth )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Osaka Red District</span><br>
                     ( Rosella, Based with Milk )</p>
-                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Picotaro Boost</span><br>
+                    <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">Pikotaro Boost</span><br>
                     ( Out Special Coffee Mocktail )</p>
                     <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">???</span><br>
                     ( Mysterious Drink )</p>
