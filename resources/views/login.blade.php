@@ -20,20 +20,36 @@
     </header>
     <main>
         <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            @if (session()->has('loginError'))
+            <div class="row">
+                <div class="container text-center">
+                    <div class="alert alert-danger mt-3" role="alert">
+                        {{session('loginError')}}
+                    </div>
+                </div>
+            </div>
+            @endif
             <div class="row align-items-center g-lg-5 py-5">
                 <div class="col-lg-7 text-center text-lg-start">
                     <h1 class="display-4 fw-bold lh-1 mb-3">Konogawa <br> Coffee & Culture</h1>
                     <p class="col-lg-10 fs-4">Thanks for your support and hard work that you always put in our work every single day. You have shown us some commendable skills for which I can only put out the best appreciation words for you. Keep progressing, and keep up your great work!</p>
                 </div>
                 <div class="col-md-10 mx-auto col-lg-5">
-                    <form class="p-4 p-md-5 border rounded-3 bg-light">
+                    <form class="p-4 p-md-5 border rounded-3 bg-light needs-validation" action="/login" method="POST">
+                        @csrf
+                        <p class="fw-bold">Please enter your information below</p>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Username</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
+                            <label for="email">Email Address</label>
+                            @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                            <label for="password">Password</label>
                         </div>
                         <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Login</button>
                     </form>
@@ -51,6 +67,7 @@
             </footer>
         </div>
     </main>
+    <script src="{{url('/js/form-validation.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

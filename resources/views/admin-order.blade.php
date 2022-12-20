@@ -37,45 +37,38 @@
                         <h4 class="text-center fw-bold">Menu</h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#" style="color: var(--bs-blue)">
+                                <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
                                     <i class="bi bi-cart"></i>
                                     <span class="align-text-bottom"></span>
-                                    Orders
+                                    Order
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/admin/category">
                                     <i class="bi bi-tag"></i>
                                     <span class="align-text-bottom"></span>
                                     Category
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-box-seam"></i>
-                                    <span class="align-text-bottom"></span>
-                                    Inventory
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/admin/product">
                                     <i class="bi bi-cup-hot"></i>
                                     <span class="align-text-bottom"></span>
                                     Product
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/admin/user">
                                     <i class="bi bi-people"></i>
                                     <span class="align-text-bottom"></span>
                                     User
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-clock"></i>
+                                <a class="nav-link" href="/admin/admin">
+                                    <i class="bi bi-person-lock"></i>
                                     <span class="align-text-bottom"></span>
-                                    Session
+                                    Admin
                                 </a>
                             </li>
                         </ul>
@@ -105,8 +98,8 @@
                                     <td>35000</td>
                                     <td>Done</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
+                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -116,8 +109,8 @@
                                     <td>24000</td>
                                     <td>Done</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
+                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,8 +120,8 @@
                                     <td>25000</td>
                                     <td>Ongoing</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
+                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

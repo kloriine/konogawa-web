@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,14 +34,57 @@ Route::get('/contact-us', function () {
     return view('contact');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::redirect('/admin', '/admin/order')->name('admin');
+
+// Route::get('/admin/order', function () {
+//     return view('admin-order');
+// });
+
+// Route::get('/admin/category', function () {
+//     return view('admin-category');
+// });
+
+// Route::get('/admin/inventory', function () {
+//     return view('admin-inventory');
+// });
+
+// Route::get('/admin/product', function () {
+//     return view('admin-product');
+// });
+
+// Route::get('/admin/user', function () {
+//     return view('admin-user');
+// });
+
+// Route::get('/admin/admin', function () {
+//     return view('admin-admin');
+// });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/order', function () {
+        return view('admin-order');
+    });
+
+    Route::get('/admin/category', function () {
+        return view('admin-category');
+    });
+    
+    Route::get('/admin/inventory', function () {
+        return view('admin-inventory');
+    });
+    
+    Route::get('/admin/product', function () {
+        return view('admin-product');
+    });
+    
+    Route::get('/admin/user', function () {
+        return view('admin-user');
+    });
+    
+    Route::get('/admin/admin', function () {
+        return view('admin-admin');
+    });
 });
-
-// Route::get('/admin', function () {
-//     return view('admin');
-// })->middleware('auth');
