@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,10 +50,6 @@ Route::redirect('/admin', '/admin/order')->name('admin');
 //     return view('admin-category');
 // });
 
-// Route::get('/admin/inventory', function () {
-//     return view('admin-inventory');
-// });
-
 // Route::get('/admin/product', function () {
 //     return view('admin-product');
 // });
@@ -67,22 +66,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/order', function () {
         return view('admin-order');
     });
+    
+    Route::get('/admin/category', [AdminCategoryController::class, 'index']);
 
-    Route::get('/admin/category', function () {
-        return view('admin-category');
-    });
+    Route::get('/admin/product', [AdminProductController::class, 'index']);
     
-    Route::get('/admin/inventory', function () {
-        return view('admin-inventory');
-    });
-    
-    Route::get('/admin/product', function () {
-        return view('admin-product');
-    });
-    
-    Route::get('/admin/user', function () {
-        return view('admin-user');
-    });
+    Route::get('/admin/user', [AdminUserController::class, 'index']);
     
     Route::get('/admin/admin', function () {
         return view('admin-admin');

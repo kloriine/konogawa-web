@@ -88,33 +88,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($categories as $category)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Food</td>
+                                    <td>{{$category->id}}</td>
+                                    <td>{{$category->category}}</td>
                                     <td>
                                         <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
                                         <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Drink</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Snack</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <a class="btn btn-primary mt-md-3" href="#" role="button"><i class="bi bi-plus"></i> Create New Category</a>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New Category</a>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            {{$categories->links()}}
+                        </div>
                     </div>
                 </div>
             </div>

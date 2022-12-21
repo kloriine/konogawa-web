@@ -83,29 +83,35 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Password</th>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Telephone</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $user)
                                 <tr>
-                                    <td>1</td>
-                                    <td>ahlulazizap@gmail.com</td>
-                                    <td>$2a$12$S///1MpaUYu/GqWOWtBdBeEVFRoP1.00J.Kh7/mG9cxaxr92I6g76</td>
-                                    <td>Ahlul</td>
-                                    <td>Putra</td>
-                                    <td>082137236445</td>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->password}}</td>
                                     <td>
                                         <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
                                         <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New Users</a>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            {{$users->links()}}
+                        </div>
                     </div>
                 </div>
             </div>

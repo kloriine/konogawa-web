@@ -91,31 +91,29 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($products as $product)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mofu Mofu Tamago</td>
-                                    <td>Soft omolette egg showered with our special mentai sauce, will guarantee you a sweet experience</td>
-                                    <td>Food</td>
-                                    <td>25000</td>
+                                    <td>{{$product->id}}</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->description}}</td>
+                                    <td>{{$product->category_id}}</td>
+                                    <td>{{$product->price}}</td>
                                     <td>
                                         <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
                                         <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Orenji Chikin</td>
-                                    <td>Fresh chicken cooked with our OG mentai sauce, served with love and rice</td>
-                                    <td>Food</td>
-                                    <td>29000</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <a class="btn btn-primary mt-md-3" href="#" role="button"><i class="bi bi-plus"></i> Create New Product</a>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New Product</a>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            {{$products->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
