@@ -23,4 +23,20 @@ class UserMobileController extends Controller
             ], 401);
         }
     }
+
+    public function logout(Request $request){
+        if(Auth::user()){
+            $user = Auth::user()->token();
+            $user->revoke();
+            return response()->json([
+                'success' => true,
+                'message' => 'Logout successfully',
+        ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to Logout',
+            ]);
+        }
+    }
 }
