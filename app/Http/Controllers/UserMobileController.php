@@ -12,13 +12,13 @@ class UserMobileController extends Controller
             $user = Auth::user();
             $success['token'] = $user->createToken('appToken')->accessToken;
             return response()->json([
-                'succes' => true,
+                'success' => true,
                 'token' => $success,
                 'user' => $user,
             ]);
         } else {
             return response()->json([
-                'succes' => false,
+                'success' => false,
                 'message' => 'Your credentials does not match our records',
             ], 401);
         }
