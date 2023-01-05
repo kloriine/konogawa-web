@@ -58,7 +58,7 @@
             <div class="row featurette">
                 <div class="col-lg-7 order-md-2 pb-5">
                     <h2 class="featurette-heading fw-normal lh-1 mt-lg-5">Our Story</h2>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas erat id est posuere, a ultricies sem gravida. In malesuada, orci eget scelerisque sagittis, sem nulla pretium mi, mattis faucibus quam elit in nibh. Aliquam in porta elit. Aliquam venenatis velit ut sem varius mattis. Proin sodales suscipit orci, nec malesuada mi auctor vitae. Sed turpis ligula, euismod eget dolor nec, egestas rutrum elit. Curabitur rutrum viverra maximus. Suspendisse placerat laoreet ante, eu luctus nibh blandit sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin magna justo. Vestibulum id lorem ultrices, pulvinar lectus nec, ultrices magna.</p>
+                    <p class="lead">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable Ryokan-styled (Japanese Inn) dining area.</p>
                     <a class="btn btn-primary btn-lg" href="/about" role="button">Read More</a>
                 </div>
                 <div class="col-lg-5 order-md-1 pb-5">
