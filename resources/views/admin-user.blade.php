@@ -107,7 +107,7 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New Users</a>
+                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New User</a>
                         </div>
                         <div class="col-lg-6 mt-4">
                             {{$users->links()}}
