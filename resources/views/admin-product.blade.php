@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel - Konogawa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 </head>
 <body>
@@ -96,11 +97,120 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->description}}</td>
-                                    <td>{{$product->category_id}}</td>
+                                    <td>{{$product->category->category}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-description="{{$product->description}}" data-category="{{$product->category_id}}" data-price="{{$product->price}}">
+                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="editProductLabel">Edit an Existing Product</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form id="editFormProduct" action="{{ route('product.edit', '') }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="row g-3 align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1">Name</span>
+                                                                <input type="text" id="editProductNameText" class="form-control" name="productName" placeholder="Something" aria-label="productName" aria-describedby="basic-addon1" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon2">Description</span>
+                                                                <input type="text" id="editProductDescriptionText" class="form-control" name="productDescription" placeholder="Wow, oishi!" aria-label="productDescription" aria-describedby="basic-addon2">
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <label for="productCategory" class="col-form-label mx-2">Category:</label>
+                                                            </div>
+                                                            <div class="col-9 ms-auto">
+                                                                <select id="productCategory" name="productCategory" class="form-select" aria-label="Select category" required>
+                                                                    @foreach ($categories as $category)
+                                                                        <option value="{{$category->id}}">{{$category->category}}</option>
+                                                                    @endforeach
+                                                                    {{-- <option value="1">Mentai Series</option>
+                                                                    <option value="2">Katsu Series</option>
+                                                                    <option value="3">Rice Box</option>
+                                                                    <option value="4">Snacks</option>
+                                                                    <option value="5">Dessert</option>
+                                                                    <option value="6">Coffee Based</option>
+                                                                    <option value="7">Latte and Friends</option>
+                                                                    <option value="8">Coffee For Another Day</option>
+                                                                    <option value="9">Manual Brew</option>
+                                                                    <option value="10">Don't Spill it</option>
+                                                                    <option value="11">Konogawa Special Signature</option> --}}
+                                                                </select>
+                                                                {{-- <input type="text" name="productCategory" id="productCategory" class="form-control" required> --}}
+                                                            </div>
+                                                            <div class="input-group mb-3 mt-4">
+                                                                <span class="input-group-text" id="basic-addon3">Price</span>
+                                                                <input type="number" id="editProductPriceText" class="form-control" name="productPrice" placeholder="25000" aria-label="productPrice" aria-describedby="basic-addon3" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </div>
+                                                </form>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.editButton', function () {
+                                                var productId = $(this).data('id');
+                                                var productName = $(this).data('name');
+                                                var productDescription = $(this).data('description');
+                                                var productCategory = $(this).data('category');
+                                                var productPrice = $(this).data('price');
+                                                $('.modal-body #editProductNameText').val(productName);
+                                                $('.modal-body #editProductDescriptionText').val(productDescription);
+                                                $('.modal-body #productCategory').val(productCategory).change();
+                                                $('.modal-body #editProductPriceText').val(productPrice);
+                                                $('#editFormProduct').submit(function () {
+                                                    var action = '{{ route('product.edit', ':id') }}';
+                                                    action = action.replace(':id', productId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct" data-id="{{$product->id}}" data-name="{{$product->name}}">
+                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <div class="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteProductLabel">Delete an Existing Product</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form id="deleteFormProduct" action="{{ route('product.delete', '') }}" method="GET">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <p id="deleteProductText"></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.deleteButton', function () {
+                                                var productId = $(this).data('id');
+                                                var productName = $(this).data('name');
+                                                $('#deleteProductText').html(function () {
+                                                    var text = 'You are about to delete <b>:A</b> from the list!'
+                                                    text = text.replace(':A', productName);
+                                                    $(this).html(text);
+                                                });
+                                                $('#deleteFormProduct').submit(function () {
+                                                    var action = '{{ route('product.delete', ':id') }}';
+                                                    action = action.replace(':id', productId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -109,7 +219,58 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <a class="btn btn-primary" href="#" role="button"><i class="bi bi-plus"></i> Create New Product</a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct"><i class="bi bi-plus"></i> Create New Product</button>
+                        </div>
+                        <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="addProductLabel">Add New Product</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('product.store') }}" method="POST">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="row g-3 align-items-center">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                                    <input type="text" class="form-control" name="productName" placeholder="Something" aria-label="productName" aria-describedby="basic-addon1" required>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon2">Description</span>
+                                                    <input type="text" class="form-control" name="productDescription" placeholder="Wow, oishi!" aria-label="productDescription" aria-describedby="basic-addon2">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <label for="productCategory" class="col-form-label mx-2">Category:</label>
+                                                </div>
+                                                <div class="col-9 ms-auto">
+                                                    <select id="productCategory" name="productCategory" class="form-select" aria-label="Select category" required>
+                                                        <option value="1">Mentai Series</option>
+                                                        <option value="2">Katsu Series</option>
+                                                        <option value="3">Rice Box</option>
+                                                        <option value="4">Snacks</option>
+                                                        <option value="5">Dessert</option>
+                                                        <option value="6">Coffee Based</option>
+                                                        <option value="7">Latte and Friends</option>
+                                                        <option value="8">Coffee For Another Day</option>
+                                                        <option value="9">Manual Brew</option>
+                                                        <option value="10">Don't Spill it</option>
+                                                        <option value="11">Konogawa Special Signature</option>
+                                                    </select>
+                                                    {{-- <input type="text" name="productCategory" id="productCategory" class="form-control" required> --}}
+                                                </div>
+                                                <div class="input-group mb-3 mt-4">
+                                                    <span class="input-group-text" id="basic-addon3">Price</span>
+                                                    <input type="number" class="form-control" name="productPrice" placeholder="25000" aria-label="productPrice" aria-describedby="basic-addon3" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-6 mt-4">
                             {{$products->links()}}
@@ -126,6 +287,6 @@
             </footer>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

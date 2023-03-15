@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAdminController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
@@ -37,6 +38,9 @@ Route::get('/contact-us', function () {
     return view('contact');
 });
 
+// Route::get('/login', [LoginController::class, 'index'])->name('login');
+// Route::post('/login', [LoginController::class, 'authenticate']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
@@ -67,13 +71,22 @@ Route::middleware('auth')->group(function () {
         return view('admin-order');
     });
     
-    Route::get('/admin/category', [AdminCategoryController::class, 'index']);
+    Route::get('/admin/category', [AdminCategoryController::class, 'index'])->name('category.index');
+    Route::post('/admin/category', [AdminCategoryController::class, 'store'])->name('category.store');
+    Route::post('/admin/category/{id}', [AdminCategoryController::class, 'edit'])->name('category.edit');
+    Route::get('/admin/category/{id}', [AdminCategoryController::class, 'destroy'])->name('category.delete');
 
-    Route::get('/admin/product', [AdminProductController::class, 'index']);
+    Route::get('/admin/product', [AdminProductController::class, 'index'])->name('product.index');
+    Route::post('/admin/product', [AdminProductController::class, 'store'])->name('product.store');
+    Route::post('/admin/product/{id}', [AdminProductController::class, 'edit'])->name('product.edit');
+    Route::get('/admin/product/{id}', [AdminProductController::class, 'destroy'])->name('product.delete');
     
-    Route::get('/admin/user', [AdminUserController::class, 'index']);
-    
-    Route::get('/admin/admin', function () {
-        return view('admin-admin');
-    });
+    Route::get('/admin/user', [AdminUserController::class, 'index'])->name('user.index');
+    Route::post('/admin/user', [AdminUserController::class, 'store'])->name('user.store');
+    Route::get('/admin/user/{id}', [AdminUserController::class, 'destroy'])->name('user.delete');
+
+    Route::get('/admin/admin', [AdminAdminController::class, 'index'])->name('admin.index');
+    Route::post('/admin/admin', [AdminAdminController::class, 'store'])->name('admin.store');
+    Route::post('/admin/admin/{id}', [AdminAdminController::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/admin/{id}', [AdminAdminController::class, 'destroy'])->name('admin.delete');
 });

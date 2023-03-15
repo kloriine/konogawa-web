@@ -15,10 +15,10 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $product = Product::with('category_id')->get();
+            $product = Product::with('category')->get();
             return $this->responseOK($product, 200);
         } catch (\Throwable $th) {
-            \Log::error($th->getMessage());
+            // \Log::error($th->getMessage());
             return $this->responseError("Internal Server Error", 500);
         }
     }
@@ -65,13 +65,13 @@ class ProductController extends Controller
     public function show($id)
     {
         try {
-            $product = Product::with('category_id')->where('id',$id)->first();
+            $product = Product::with('category')->where('id',$id)->first();
             if (empty($product)){
-                return $this->responseError("Data dengan ID ".$id." tidak ditemukan", 404);
+                return $this->responseError("Data not found", 404);
             }
             return $this->responseOK($product, 200);
         } catch (\Throwable $th) {
-            \Log::error($th->getMessage());
+            // \Log::error($th->getMessage());
             return $this->responseError('Internal Server Error', 500);
         }
     }

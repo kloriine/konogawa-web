@@ -9,5 +9,12 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'categories';
+
+    protected $primaryKey = 'id';
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'category_id', 'id');
+    }
 }

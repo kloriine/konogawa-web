@@ -16,9 +16,9 @@ use App\Http\Controllers\UserMobileController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::resource('products', ProductController::class);
 Route::group(['prefix' => 'account'], function () {

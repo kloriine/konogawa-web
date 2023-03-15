@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class AdminUserController extends Controller
+class AdminAdminController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $users = User::where('role_id', 2)->paginate(10);
-        return view('admin-user', ['users' => $users]);
+        $users = User::where('role_id', 1)->paginate(10);
+        return view('admin-admin', ['users' => $users]);
     }
 
     public function store () {
@@ -27,11 +26,33 @@ class AdminUserController extends Controller
         $user->name = request('userName');
         $user->email = request('userEmail');
         $user->password = Hash::make(request('userPassword'));
-        $user->role_id = 2;
+        $user->role_id = 1;
         $user->save();
 
         $notification = [
-            'message' => 'User added successfully!',
+            'message' => 'Admin added successfully!',
+            'alert-type' => 'success'
+        ];
+
+        return back()->with($notification);
+    }
+
+    public function edit (Request $request, $id) {
+        $this->validate(request(), [
+            'userName' => 'required',
+            'userEmail' => 'required',
+            'userPassword' => 'required',
+        ]);
+
+        $data = array(
+            'name' => $request->input('userName'),
+            'email' => $request->input('userEmail'),
+            'password' => Hash::make($request->input('userPassword')),
+        );
+        User::where('id', $id)->update($data);
+
+        $notification = [
+            'message' => 'Admin updated successfully!',
             'alert-type' => 'success'
         ];
 
@@ -42,7 +63,7 @@ class AdminUserController extends Controller
         User::where('id', $id)->delete($id);
 
         $notification = [
-            'message' => 'User has been deleted successfully!',
+            'message' => 'Admin has been deleted successfully!',
             'alert-type' => 'info'
         ];
 

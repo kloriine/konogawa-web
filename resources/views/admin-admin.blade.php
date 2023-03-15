@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel - Konogawa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 </head>
 <body>
@@ -82,31 +83,151 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Username</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Password</th>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Telephone</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $user)
                                 <tr>
-                                    <td>1</td>
-                                    <td>ahlulazizap@gmail.com</td>
-                                    <td>$2a$12$S///1MpaUYu/GqWOWtBdBeEVFRoP1.00J.Kh7/mG9cxaxr92I6g76</td>
-                                    <td>Ahlul</td>
-                                    <td>Putra</td>
-                                    <td>082137236445</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->password}}</td>
                                     <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}">
+                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <div class="modal fade" id="editAdmin" tabindex="-1" aria-labelledby="editAdminLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="editAdminLabel">Edit an Existing Admin</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form id="editFormAdmin" action="{{ route('admin.edit', '') }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="row g-3 align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1">Name</span>
+                                                                <input id="editAdminNameText" type="text" class="form-control" name="userName" placeholder="John Doe" aria-label="userName" aria-describedby="basic-addon1" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon2">Email</span>
+                                                                <input id="editAdminEmailText" type="email" class="form-control" name="userEmail" placeholder="johndoe@gmail.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon3">Password</span>
+                                                                <input type="password" class="form-control" name="userPassword" placeholder="" aria-label="userPassword" aria-describedby="basic-addon3" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.editButton', function () {
+                                                var adminId = $(this).data('id');
+                                                var adminName = $(this).data('name');
+                                                var adminEmail = $(this).data('email');
+                                                $('.modal-body #editAdminNameText').val(adminName);
+                                                $('.modal-body #editAdminEmailText').val(adminEmail);
+                                                $('#editFormAdmin').submit(function () {
+                                                    var action = '{{ route('admin.edit', ':id') }}';
+                                                    action = action.replace(':id', adminId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"> 
+                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <div class="modal fade" id="deleteAdmin" tabindex="-1" aria-labelledby="deleteAdminLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteAdminLabel">Delete an Existing Admin</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form id="deleteFormAdmin" action="{{ route('admin.delete', '') }}" method="GET">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <p id="deleteAdminText"></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.deleteButton', function () {
+                                                var adminId = $(this).data('id');
+                                                var adminName = $(this).data('name');
+                                                var adminEmail = $(this).data('email');
+                                                $('#deleteAdminText').html(function () {
+                                                    var text = 'You are about to delete admin called <b>:A</b> with the email of <b>:B</b> from the list!'
+                                                    text = text.replace(':A', adminName);
+                                                    text = text.replace(':B', adminEmail);
+                                                    $(this).html(text);
+                                                });
+                                                $('#deleteFormAdmin').submit(function () {
+                                                    var action = '{{ route('admin.delete', ':id') }}';
+                                                    action = action.replace(':id', adminId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <a class="btn btn-primary mt-md-3" href="#" role="button"><i class="bi bi-plus"></i> Create New Admin</a>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdmin"><i class="bi bi-plus"></i> Create New Admin</button>
+                        </div>
+                        <div class="modal fade" id="addAdmin" tabindex="-1" aria-labelledby="addAdminLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="addAdminLabel">Add New Admin</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('admin.store') }}" method="POST">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="row g-3 align-items-center">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                                    <input type="text" class="form-control" name="userName" placeholder="John Doe" aria-label="userName" aria-describedby="basic-addon1" required>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon2">Email</span>
+                                                    <input type="email" class="form-control" name="userEmail" placeholder="johndoe@gmail.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon3">Password</span>
+                                                    <input type="password" class="form-control" name="userPassword" placeholder="" aria-label="userPassword" aria-describedby="basic-addon3" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-4">
+                            {{$users->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,6 +240,6 @@
             </footer>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
