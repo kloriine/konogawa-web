@@ -46,38 +46,44 @@
                 <div>
                     <h2 class="featurette-heading fw-normal lh-1 mt-5">Contact Us</h2>
                     <p class="lead">Should you have any question or concern, you can reach us by filling out the contact form, coming to our cafe, finding us on other social networks, or you can personal email us at: 
-                    <br><span class="fw-bold fs-4 text-primary">contact@konogawa.cafe</span></p>
+                    <br><span class="fw-bold fs-4 text-primary">konogawa.cafe@gmail.com</span></p>
+                    @if(Session::has('success'))
+                        <div class="alert alert-success text-center">
+                            {{Session::get('success')}}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5 order-lg-2 mb-5">
-                    <form class="needs-validation" novalidate>
+                    <form action="{{route('contact.send')}}" method="POST" class="needs-validation" novalidate>
+                        @csrf
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="Name" class="form-label">Name <span class="text-muted">(Required)</span></label>
-                                <input type="text" class="form-control" id="Name" placeholder="John Doe" value="" required>
+                                <label for="name" class="form-label">Name <span class="text-muted">(Required)</span></label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="John Doe" required>
                                 <div class="invalid-feedback">
                                     Valid name is required.
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted">(Required)</span></label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control" id="subject" placeholder="Title of your message." required>
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Title of your message" required>
                                 <div class="invalid-feedback">
                                     Please give your mail a subject.
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="6" placeholder="Criticism, suggestions, or questions." required></textarea>
+                                <textarea style="resize:none;" class="form-control" name="message" id="message" rows="6" placeholder="Criticism, suggestions, or questions" required></textarea>
                                 <div class="invalid-feedback">
                                     Please type in your criticism, suggestions, or questions.
                                 </div>

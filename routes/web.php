@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ContactUsFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +35,8 @@ Route::get('/news', function () {
     return view('news');
 });
 
-Route::get('/contact-us', function () {
-    return view('contact');
-});
+Route::get('/contact-us', [ContactUsFormController::class, 'index']);
+Route::post('/contact-us', [ContactUsFormController::class, 'sendMail'])->name('contact.send');
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Route::post('/login', [LoginController::class, 'authenticate']);
