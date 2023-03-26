@@ -49,7 +49,7 @@
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-4">Mentai Series / メンタイシリース</h2>
                     @foreach ($category1 as $category1)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category1->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category1->name}}</span><br>
                             ( {{$category1->description}} )</p>
                     @endforeach
                 </div>
@@ -61,7 +61,7 @@
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-3">Katsu Series / カツシリース</h2>
                     @foreach ($category2 as $category2)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category2->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category2->name}}</span><br>
                             ( {{$category2->description}} )</p>
                     @endforeach
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-lg-12 text-lg-center">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary">Rice Box / ライスボックス</h2>
                     @foreach ($category3 as $category3)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category3->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category3->name}}</span><br>
                             ( {{$category3->description}} )</p>
                     @endforeach
                 </div>
@@ -82,7 +82,7 @@
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-0">Snack / スナック</h2>
                     @foreach ($category4 as $category4)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category4->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category4->name}}</span><br>
                             ( {{$category4->description}} )</p>
                     @endforeach
                 </div>
@@ -94,7 +94,7 @@
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-3">Dessert / デザート</h2>
                     @foreach ($category5 as $category5)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category5->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category5->name}}</span><br>
                             ( {{$category5->description}} )</p>
                     @endforeach
                 </div>
@@ -106,7 +106,7 @@
                 <div class="col-lg-7 mt-5 mt-lg-0">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Coffee Based / コーヒーベースー</h2>
                     @foreach ($category6 as $category6)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category6->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category6->name}}</span><br>
                             ( {{$category6->description}} )</p>
                     @endforeach
                 </div>
@@ -120,7 +120,7 @@
                 <div class="col-lg-7 order-lg-1 mt-5 mt-lg-0">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Latte and Friends / ラテと友達</h2>
                     @foreach ($category7 as $category7)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category7->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category7->name}}</span><br>
                             ( {{$category7->description}} )</p>
                     @endforeach
                 </div>
@@ -136,7 +136,7 @@
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-4">Coffee For Another Day / 別の日のコーヒー</h2>
                     @foreach ($category8 as $category8)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category8->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category8->name}}</span><br>
                             ( {{$category8->description}} )</p>
                     @endforeach
                 </div>
@@ -148,7 +148,7 @@
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary">Manual Brew / 手動醸造</h2>
                     @foreach ($category9 as $category9)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category9->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category9->name}}</span><br>
                     @endforeach
                 </div>
             </div>
@@ -159,7 +159,7 @@
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-3">Don't Spill It / こぼさないでください</h2>
                     @foreach ($category10 as $category10)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category10->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category10->name}}</span><br>
                             ( {{$category10->description}} )</p>
                     @endforeach
                 </div>
@@ -171,7 +171,7 @@
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Konogawa Special Signature</h2>
                     @foreach ($category11 as $category11)
-                        <p class="lead fs-6 ms-1"><span class="fw-bold fs-4">{{$category11->name}}</span><br>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category11->name}}</span><br>
                             ( {{$category11->description}} )</p>
                     @endforeach
                 </div>

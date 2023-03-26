@@ -43,8 +43,8 @@
     <main>
         <div class="container-fluid">
             <div class="container text-center mb-5">
-                <h2 class="featurette-heading fw-normal lh-1 mt-5">News Center</h2>
-                <p class="lead">Read our post to catch up with us!</p>
+                <h2 class="featurette-heading fw-normal lh-1 mt-5 text-primary">News Center</h2>
+                <p class="lead fs-4">Read our post to catch up with us!</p>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach ($news as $new)
@@ -52,6 +52,7 @@
                         <div class="card border-dark">
                             <img src="{{url($new->img_src)}}" class="card-img-top" alt="News Image">
                             <div class="card-body">
+                                <h5 class="card-title">{{$new->title}}</h5>
                                 <p class="card-text">{{$new->description}}</p>
                             </div>
                         </div>

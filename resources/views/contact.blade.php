@@ -44,9 +44,9 @@
         <div class="container">
             <div class="row mb-5">
                 <div>
-                    <h2 class="featurette-heading fw-normal lh-1 mt-5">Contact Us</h2>
+                    <h2 class="featurette-heading fw-normal lh-1 mt-5 text-primary">Contact Us</h2>
                     <p class="lead">Should you have any question or concern, you can reach us by filling out the contact form, coming to our cafe, finding us on other social networks, or you can personal email us at: 
-                    <br><span class="fw-bold fs-4 text-primary">konogawa.cafe@gmail.com</span></p>
+                    <br><span class="fw-bold fs-4">konogawa.cafe@gmail.com</span></p>
                     @if(Session::has('success'))
                         <div class="alert alert-success text-center">
                             {{Session::get('success')}}

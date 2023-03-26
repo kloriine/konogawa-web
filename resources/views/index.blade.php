@@ -48,7 +48,7 @@
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h1 class="fw-bold text-primary">コ ノ ガ ワ</h1>
-                            <p class="fw-bold">Konogawa Coffee & Culture</p>
+                            <p class="fw-bold fs-4">Konogawa Coffee & Culture</p>
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
         <div class="container marketing">
             <div class="row featurette">
                 <div class="col-lg-7 order-md-2 pb-5">
-                    <h2 class="featurette-heading fw-normal lh-1 mt-lg-5">Our Story</h2>
-                    <p class="lead">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable Ryokan-styled (Japanese Inn) dining area.</p>
+                    <h2 class="featurette-heading fw-normal lh-1 mt-lg-5 text-primary">Our Story</h2>
+                    <p class="lead fs-4">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable Ryokan-styled (Japanese Inn) dining area.</p>
                     <a class="btn btn-primary btn-lg" href="/about" role="button">Read More</a>
                 </div>
                 <div class="col-lg-5 order-md-1 pb-5">
@@ -68,8 +68,8 @@
         </div>
         <div style="background-color: #f5f5f5">
             <div class="container-fluid text-center">
-                <h2 class="featurette-heading fw-normal lh-1 pt-5 mt-0">Craving for Something?</h2>
-                <p class="lead">We've got something just for you!</p>
+                <h2 class="featurette-heading fw-normal lh-1 pt-5 mt-0 text-primary">Craving for Something?</h2>
+                <p class="lead fs-4">We've got something just for you!</p>
             </div>
             <div class="container-fluid py-5">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -104,35 +104,19 @@
             </div>
         </div>
         <div class="container">
-            <h2 class="featurette-heading fw-normal lh-1 mt-5">News</h2>
-            <p class="lead">Find out the latest information about our place.</p>
-            <div class="row mt-5">
-                <div class="col-md-8 col-lg-9 col-xl-10 order-md-2">
-                    <p class="fw-bold pt-xxl-3">Post 1</p>
-                    <p class="fw-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis pharetra odio, sit amet vehicula metus. Aenean sagittis nisl quis orci mattis, ut commodo purus pretium. Proin ullamcorper nunc ut mollis pulvinar. Donec id elementum erat. Vivamus vehicula tortor iaculis convallis consequat. Nulla sed posuere enim. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed porttitor felis dolor, id dapibus nulla porttitor non.</p>
+            <h2 class="featurette-heading fw-normal lh-1 mt-5 text-primary">News</h2>
+            <p class="lead fs-4">Find out the latest information about our place.</p>
+            @foreach ($news as $new)
+                <div class="row mt-5">
+                    <div class="col-md-8 col-lg-9 col-xl-10 order-md-2">
+                        <p class="fw-bold pt-xxl-3 fs-4">{{$new->title}}</p>
+                        <p class="fw-normal fs-5">{{$new->description}}</p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-2 order-md-1">
+                        <img class="img-fluid" width="100%" src="{{url($new->img_src)}}" alt="Placeholder">
+                    </div>
                 </div>
-                <div class="col-md-4 col-lg-3 col-xl-2 order-md-1">
-                    <img class="img-fluid" width="100%" src="{{url('/images/placeholder.jpg')}}" alt="Placeholder">
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-8 col-lg-9 col-xl-10 order-md-2">
-                    <p class="fw-bold pt-xxl-3">Post 2</p>
-                    <p class="fw-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rutrum ipsum ac posuere semper. Aenean at lorem sed mauris maximus posuere et non nibh. In in venenatis diam. Sed vitae nulla sit amet metus cursus fermentum. Aliquam feugiat tellus eu sem vehicula, at condimentum leo tincidunt. Donec fringilla, ex sed vehicula faucibus, arcu turpis aliquam ante, commodo sodales massa mi tincidunt dui. Maecenas eget rhoncus orci. Duis vestibulum arcu at diam luctus convallis. Donec non libero a nisi eleifend aliquet. Fusce non ornare elit, a condimentum magna.</p>
-                </div>
-                <div class="col-md-4 col-lg-3 col-xl-2 order-md-1">
-                    <img class="img-fluid" width="100%" src="{{url('/images/placeholder.jpg')}}" alt="Placeholder">
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-md-8 col-lg-9 col-xl-10 order-md-2">
-                    <p class="fw-bold pt-xxl-3">Post 3</p>
-                    <p class="fw-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem justo, interdum at pellentesque sed, luctus ac ex. Mauris eget lorem quis quam fringilla egestas. Duis eleifend lacus a leo suscipit, ac interdum dui venenatis. Nunc velit sapien, blandit at rhoncus in, efficitur sit amet ligula. Duis porta, enim vitae sodales varius, mauris nibh condimentum odio, a malesuada magna lorem vel risus. Duis lacinia auctor est, id dapibus libero pulvinar quis. Pellentesque porta auctor nisl tincidunt rhoncus. Cras tristique elit ac pellentesque egestas. Morbi fringilla aliquet convallis. Aenean id leo ut mauris ornare tincidunt. Maecenas tincidunt quam nulla, et efficitur ante posuere in.</p>
-                </div>
-                <div class="col-md-4 col-lg-3 col-xl-2 order-md-1">
-                    <img class="img-fluid" width="100%" src="{{url('/images/placeholder.jpg')}}" alt="Placeholder">
-                </div>
-            </div>
+            @endforeach
             <div class="container-fluid text-center pt-5">
                 <a class="btn btn-primary btn-lg" href="/news" role="button">More News</a>
             </div>

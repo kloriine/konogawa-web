@@ -43,13 +43,13 @@
     <main>
         <div class="container marketing">
             <div class="row featurette mt-5">
-                <div class="col-lg-5 order-lg-2 mt-5">
+                <div class="col-lg-5 order-lg-2 mt-5 pt-5">
                     <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/konogawa-story.jpg')}}" alt="Konogawa">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 mt-0">Our Story</h2>
-                    <p class="lead">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable Ryokan-styled (Japanese Inn) dining area.</p>
-                    <p class="lead">The menu at Konogawa is filled with a variety of Japanese and Western-style drinks and snacks. We have selection of light Japanese-inspired dishes, such as katsu and dango, for customers to enjoy. One of the standout features of Konogawa is its beautiful outdoor patio, which is surrounded by a small garden. In the warmer months, the patio is the perfect place to sit and relax with a refreshing drink while enjoying the peaceful surroundings. Overall, Konogawa is a charming cafe that brings the beauty and culture of Japan to the heart of the city.</p>
+                    <h2 class="featurette-heading fw-normal lh-1 mt-0 text-primary">Our Story</h2>
+                    <p class="lead fs-4">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable dining area.</p>
+                    <p class="lead fs-4">The menu at Konogawa is filled with a variety of Japanese and Western-style drinks and snacks. We have selection of light Japanese-inspired dishes, such as katsu and dango, for customers to enjoy. One of the standout features of Konogawa is its beautiful outdoor patio, which is surrounded by a small garden. In the warmer months, the patio is the perfect place to sit and relax with a refreshing drink while enjoying the peaceful surroundings. Overall, Konogawa is a charming cafe that brings the beauty and culture of Japan to the heart of the city.</p>
                 </div>
             </div>
         </div>
