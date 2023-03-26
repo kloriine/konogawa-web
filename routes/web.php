@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AdminAdminController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminNewsController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactUsFormController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,13 +30,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/menu', function () {
-    return view('menu');
-});
+Route::get('/menu', [MenuController::class, 'index']);
 
-Route::get('/news', function () {
-    return view('news');
-});
+Route::get('/news', [NewsController::class, 'index']);
 
 Route::get('/contact-us', [ContactUsFormController::class, 'index']);
 Route::post('/contact-us', [ContactUsFormController::class, 'sendMail'])->name('contact.send');
@@ -80,6 +79,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/product', [AdminProductController::class, 'store'])->name('product.store');
     Route::post('/admin/product/{id}', [AdminProductController::class, 'edit'])->name('product.edit');
     Route::get('/admin/product/{id}', [AdminProductController::class, 'destroy'])->name('product.delete');
+
+    Route::get('/admin/news', [AdminNewsController::class, 'index'])->name('news.index');
+    Route::post('/admin/news', [AdminNewsController::class, 'store'])->name('news.store');
+    Route::post('/admin/news/{id}', [AdminNewsController::class, 'edit'])->name('news.edit');
+    Route::get('/admin/news/{id}', [AdminNewsController::class, 'destroy'])->name('news.delete');
     
     Route::get('/admin/user', [AdminUserController::class, 'index'])->name('user.index');
     Route::post('/admin/user', [AdminUserController::class, 'store'])->name('user.store');

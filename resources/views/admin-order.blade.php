@@ -58,6 +58,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/admin/news">
+                                    <i class="bi bi-newspaper"></i>
+                                    <span class="align-text-bottom"></span>
+                                    News
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/admin/user">
                                     <i class="bi bi-people"></i>
                                     <span class="align-text-bottom"></span>

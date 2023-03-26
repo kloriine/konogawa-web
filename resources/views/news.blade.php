@@ -47,7 +47,17 @@
                 <p class="lead">Read our post to catch up with us!</p>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <div class="col">
+                @foreach ($news as $new)
+                    <div class="col">
+                        <div class="card border-dark">
+                            <img src="{{url($new->img_src)}}" class="card-img-top" alt="News Image">
+                            <div class="card-body">
+                                <p class="card-text">{{$new->description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col">
                     <div class="card border-primary">
                         <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
                         <div class="card-body">
@@ -55,52 +65,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis pharetra odio, sit amet vehicula metus. Aenean sagittis nisl quis orci mattis, ut commodo purus pretium. Proin ullamcorper nunc ut mollis pulvinar. Donec id elementum erat. Vivamus vehicula tortor iaculis convallis consequat. Nulla sed posuere enim. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed porttitor felis dolor, id dapibus nulla porttitor non.</p>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card border-primary">
-                        <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Post 2</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rutrum ipsum ac posuere semper. Aenean at lorem sed mauris maximus posuere et non nibh. In in venenatis diam. Sed vitae nulla sit amet metus cursus fermentum. Aliquam feugiat tellus eu sem vehicula, at condimentum leo tincidunt. Donec fringilla, ex sed vehicula faucibus, arcu turpis aliquam ante, commodo sodales massa mi tincidunt dui. Maecenas eget rhoncus orci. Duis vestibulum arcu at diam luctus convallis. Donec non libero a nisi eleifend aliquet. Fusce non ornare elit, a condimentum magna.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-primary">
-                        <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Post 3</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem justo, interdum at pellentesque sed, luctus ac ex. Mauris eget lorem quis quam fringilla egestas. Duis eleifend lacus a leo suscipit, ac interdum dui venenatis. Nunc velit sapien, blandit at rhoncus in, efficitur sit amet ligula. Duis porta, enim vitae sodales varius, mauris nibh condimentum odio, a malesuada magna lorem vel risus. Duis lacinia auctor est, id dapibus libero pulvinar quis. Pellentesque porta auctor nisl tincidunt rhoncus. Cras tristique elit ac pellentesque egestas. Morbi fringilla aliquet convallis. Aenean id leo ut mauris ornare tincidunt. Maecenas tincidunt quam nulla, et efficitur ante posuere in.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-primary">
-                        <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Post 4</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam vel neque ut posuere. Vestibulum rutrum fringilla dui et pellentesque. Vivamus malesuada est eget sem euismod mattis. Aenean cursus at mauris id malesuada. Donec in ex erat. Aliquam et magna ut massa molestie suscipit et vel magna. Donec lacinia maximus tortor, a ornare lorem consectetur sed. Sed at lacus elementum, dapibus orci consectetur, auctor tortor. Nullam at sapien dolor. Etiam pretium laoreet orci a ultricies. Duis elementum convallis massa eu interdum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-primary">
-                        <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Post 5</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet consectetur lacus, id faucibus orci. Nullam rutrum ultrices ultrices. Cras lacinia fringilla purus quis malesuada. Quisque tempor, elit sit amet aliquam malesuada, felis mauris rhoncus lorem, quis sagittis lorem turpis ut felis. Praesent ut commodo magna, vestibulum mollis turpis. Donec ultricies rutrum ipsum, at pellentesque ipsum finibus ut. Phasellus porttitor lorem commodo faucibus porta. Aliquam ut velit ultrices, tempus urna eu, viverra nulla. Morbi orci erat, blandit eget ligula mollis, egestas volutpat massa. Morbi ut euismod nunc, non lacinia massa. Donec fringilla felis sit amet interdum luctus. Nulla ut finibus nulla. Suspendisse at lacus ac metus venenatis aliquam ac feugiat turpis.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card border-primary">
-                        <img src="{{url('/images/placeholder.jpg')}}" class="card-img-top" alt="Placeholder Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Post 6</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet, urna ornare consequat aliquam, magna justo iaculis justo, a scelerisque sem nibh a mauris. Pellentesque vel ante sem. Etiam sodales eleifend eros a dignissim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam congue vitae tortor vehicula fermentum. Etiam sagittis porttitor est, ac mattis nulla consequat at. Pellentesque consequat arcu lectus, id ullamcorper nunc sagittis in. Sed arcu dui, molestie blandit volutpat ac, euismod id nisi. Ut rhoncus tristique iaculis. Donec tincidunt cursus imperdiet. Maecenas volutpat libero vitae lorem auctor, eget scelerisque massa luctus. Aenean fringilla arcu vel dapibus iaculis. Integer id felis ornare, tincidunt nisi ac, condimentum nibh. Integer eleifend efficitur sapien. Nam pretium ante quis rutrum eleifend. Phasellus eget augue ornare, maximus diam accumsan, condimentum risus.</p>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

@@ -59,14 +59,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/news">
-                                    <i class="bi bi-newspaper"></i>
-                                    <span class="align-text-bottom"></span>
-                                    News
-                                </a>
-                            </li>
+                              <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
+                                  <i class="bi bi-newspaper"></i>
+                                  <span class="align-text-bottom"></span>
+                                  News
+                              </a>
+                          </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
+                                <a class="nav-link" href="/admin/user">
                                     <i class="bi bi-people"></i>
                                     <span class="align-text-bottom"></span>
                                     User
@@ -84,38 +84,87 @@
                 </nav>
                 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <h1 class="h2">Manage Users</h1>
+                        <h1 class="h2">Manage News</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Password</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Description</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($news as $new)
                                 <tr>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->password}}</td>
+                                    <td>{{$new->id}}</td>
+                                    <td>{{$new->title}}</td>
+                                    <td><img src="{{$new->img_src}}" class="img-fluid w-50" alt="News Image"></td>
+                                    <td>{{$new->description}}</td>
                                     <td>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUser" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}">
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editNews" data-id="{{$new->id}}" data-name="{{$new->title}}" data-description="{{$new->description}}">
+                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <div class="modal fade" id="editNews" tabindex="-1" aria-labelledby="editNewsLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="editNewsLabel">Edit an Existing News</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form id="editFormNews" action="{{ route('news.edit', '') }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="row g-3 align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon">Title</span>
+                                                                <input type="text" id="editNewsTitleText" class="form-control" name="newsTitle" placeholder="Something" aria-label="news" aria-describedby="basic-addon" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="formFile" class="form-label">News Image</label>
+                                                                <input class="form-control" type="file" name="image" id="formFile" accept="image/*" disabled>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="description" class="form-label">Description</label>
+                                                                <textarea style="resize: none;" class="form-control" name="newsDescription" id="description" rows="20" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.editButton', function () {
+                                                var newsId = $(this).data('id');
+                                                var newsName = $(this).data('name');
+                                                var newsDescription = $(this).data('description');
+                                                $('.modal-body #editNewsTitleText').val(newsName);
+                                                $('.modal-body #description').val(newsDescription);
+                                                $('#editFormNews').submit(function () {
+                                                    var action = '{{ route('news.edit', ':id') }}';
+                                                    action = action.replace(':id', newsId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNews" data-id="{{$new->id}}" data-name="{{$new->title}}">
                                             <i class="bi bi-trash"></i> Delete</button>
-                                        <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+                                        <div class="modal fade" id="deleteNews" tabindex="-1" aria-labelledby="deleteNewsLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="deleteUserLabel">Delete an Existing User</h1>
+                                                        <h1 class="modal-title fs-5" id="deleteNewsLabel">Delete an Existing News</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form id="deleteFormUser" action="{{ route('user.delete', '') }}" method="GET">
+                                                    <form id="deleteFormNews" action="{{ route('news.delete', '') }}" method="GET">
                                                         @csrf
                                                         <div class="modal-body">
-                                                            <p id="deleteUserText"></p>
+                                                            <p id="deleteNewsText"></p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">Confirm</button>
@@ -126,18 +175,16 @@
                                         </div>
                                         <script>
                                             $(document).on('click', '.deleteButton', function () {
-                                                var userId = $(this).data('id');
-                                                var userName = $(this).data('name');
-                                                var userEmail = $(this).data('email');
-                                                $('#deleteUserText').html(function () {
-                                                    var text = 'You are about to delete user called <b>:A</b> with the email of <b>:B</b> from the list!'
-                                                    text = text.replace(':A', userName);
-                                                    text = text.replace(':B', userEmail);
+                                                var newsId = $(this).data('id');
+                                                var newsName = $(this).data('name');
+                                                $('#deleteNewsText').html(function () {
+                                                    var text = 'You are about to delete a news with the title of <b>:A</b>!'
+                                                    text = text.replace(':A', newsName);
                                                     $(this).html(text);
                                                 });
-                                                $('#deleteFormUser').submit(function () {
-                                                    var action = '{{ route('user.delete', ':id') }}';
-                                                    action = action.replace(':id', userId);
+                                                $('#deleteFormNews').submit(function () {
+                                                    var action = '{{ route('news.delete', ':id') }}';
+                                                    action = action.replace(':id', newsId);
                                                     $(this).attr('action', action);
                                                 });
                                             });
@@ -150,31 +197,32 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i class="bi bi-plus"></i> Create New User</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNews">
+                              <i class="bi bi-plus"></i> Create New News</button>
                         </div>
-                        <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="addUserLabel" aria-hidden="true">
+                        <div class="modal fade" id="addNews" tabindex="-1" aria-labelledby="addNewsLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="addUserLabel">Add New User</h1>
+                                        <h1 class="modal-title fs-5" id="addNewsLabel">Create a New News</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="{{ route('user.store') }}" method="POST">
-                                        @csrf
+                                    <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                         <div class="modal-body">
                                             <div class="row g-3 align-items-center">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon1">Name</span>
-                                                    <input type="text" class="form-control" name="userName" placeholder="John Doe" aria-label="userName" aria-describedby="basic-addon1" required>
+                                                    <span class="input-group-text" id="basic-addon">Title</span>
+                                                    <input type="text" class="form-control" name="newsTitle" placeholder="Something" aria-label="news" aria-describedby="basic-addon" required>
                                                 </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon2">Email</span>
-                                                    <input type="email" class="form-control" name="userEmail" placeholder="johndoe@gmail.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">News Image</label>
+                                                    <input class="form-control" type="file" name="image" id="formFile" accept="image/*">
                                                 </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon3">Password</span>
-                                                    <input type="password" class="form-control" name="userPassword" placeholder="" aria-label="userPassword" aria-describedby="basic-addon3" required>
-                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="description" class="form-label">Description</label>
+                                                    <textarea style="resize: none;" class="form-control" name="newsDescription" id="description" rows="20" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                  </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -185,7 +233,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 mt-4">
-                            {{$users->links()}}
+                            {{$news->links()}}
                         </div>
                     </div>
                 </div>
