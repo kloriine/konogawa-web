@@ -90,16 +90,19 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $count = 1; ?>
                                 @foreach ($news as $new)
                                 <tr>
-                                    <td>{{$new->id}}</td>
+                                    <td>{{$news->perPage()*($news->currentPage()-1)+$count}}</td>
+                                    <?php $count++; ?>
                                     <td>{{$new->title}}</td>
                                     <td><img src="{{$new->img_src}}" class="img-fluid w-50" alt="News Image"></td>
                                     <td>{{$new->description}}</td>

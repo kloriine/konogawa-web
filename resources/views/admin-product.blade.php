@@ -90,7 +90,7 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Category</th>
@@ -99,9 +99,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $count = 1; ?>
                                 @foreach ($products as $product)
                                 <tr>
-                                    <td>{{$product->id}}</td>
+                                    <td>{{$products->perPage()*($products->currentPage()-1)+$count}}</td>
+                                    <?php $count++; ?>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->category->category}}</td>
@@ -252,17 +254,9 @@
                                                 </div>
                                                 <div class="col-9 ms-auto">
                                                     <select id="productCategory" name="productCategory" class="form-select" aria-label="Select category" required>
-                                                        <option value="1">Mentai Series</option>
-                                                        <option value="2">Katsu Series</option>
-                                                        <option value="3">Rice Box</option>
-                                                        <option value="4">Snacks</option>
-                                                        <option value="5">Dessert</option>
-                                                        <option value="6">Coffee Based</option>
-                                                        <option value="7">Latte and Friends</option>
-                                                        <option value="8">Coffee For Another Day</option>
-                                                        <option value="9">Manual Brew</option>
-                                                        <option value="10">Don't Spill it</option>
-                                                        <option value="11">Konogawa Special Signature</option>
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{$category->id}}">{{$category->category}}</option>
+                                                        @endforeach
                                                     </select>
                                                     {{-- <input type="text" name="productCategory" id="productCategory" class="form-control" required> --}}
                                                 </div>

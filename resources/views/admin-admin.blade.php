@@ -90,6 +90,7 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
+                                    <th scope="col">No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Password</th>
@@ -97,8 +98,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $count = 1; ?>
                                 @foreach ($users as $user)
                                 <tr>
+                                    <td>{{$users->perPage()*($users->currentPage()-1)+$count}}</td>
+                                    <?php $count++; ?>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->password}}</td>

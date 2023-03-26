@@ -89,7 +89,7 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Items Ordered</th>
                                     <th scope="col">Total</th>

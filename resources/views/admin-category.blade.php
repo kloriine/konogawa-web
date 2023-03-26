@@ -90,15 +90,17 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Category Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $count = 1; ?>
                                 @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{$category->id}}</td>
+                                    <td>{{$categories->perPage()*($categories->currentPage()-1)+$count}}</td>
+                                    <?php $count++; ?>
                                     <td>{{$category->category}}</td>
                                     <td>
                                         <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editCategory" data-id="{{$category->id}}" data-name="{{$category->category}}">
