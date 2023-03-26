@@ -221,7 +221,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="description" class="form-label">Description</label>
-                                                    <textarea style="resize: none;" class="form-control" name="newsDescription" id="description" rows="20" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                    <textarea style="resize: none;" class="form-control" name="newsDescription" rows="20" placeholder="Lorem ipsum dolor sit amet"></textarea>
                                                   </div>
                                             </div>
                                         </div>
