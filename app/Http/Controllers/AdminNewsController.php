@@ -10,7 +10,7 @@ class AdminNewsController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $news = News::paginate(3);
+        $news = News::paginate(2);
         return view('admin-news', ['news' => $news]);
     }
 
