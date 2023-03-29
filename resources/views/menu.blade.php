@@ -165,7 +165,7 @@
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row mt-lg-5">
+            <div class="row mt-5">
                 <div class="col-lg-5 order-lg-2 mt-5 mt-lg-0 pt-lg-5">
                     <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-6.jpg')}}" alt="Latte and Friends">
                 </div>
