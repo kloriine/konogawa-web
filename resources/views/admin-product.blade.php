@@ -126,10 +126,14 @@
                                                                 <span class="input-group-text" id="basic-addon1">Name</span>
                                                                 <input type="text" id="editProductNameText" class="form-control" name="productName" placeholder="Something" aria-label="productName" aria-describedby="basic-addon1" required>
                                                             </div>
-                                                            <div class="input-group mb-3">
+                                                            <div class="mb-3">
+                                                                <label for="description" class="form-label">Description</label>
+                                                                <textarea style="resize: none;" class="form-control" name="productDescription" id="editProductDescriptionText" rows="5" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                            </div>
+                                                            {{-- <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon2">Description</span>
                                                                 <input type="text" id="editProductDescriptionText" class="form-control" name="productDescription" placeholder="Wow, oishi!" aria-label="productDescription" aria-describedby="basic-addon2">
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="col-auto">
                                                                 <label for="productCategory" class="col-form-label mx-2">Category:</label>
                                                             </div>
@@ -245,10 +249,14 @@
                                                     <span class="input-group-text" id="basic-addon1">Name</span>
                                                     <input type="text" class="form-control" name="productName" placeholder="Something" aria-label="productName" aria-describedby="basic-addon1" required>
                                                 </div>
-                                                <div class="input-group mb-3">
+                                                <div class="mb-3">
+                                                    <label for="description" class="form-label">Description</label>
+                                                    <textarea style="resize: none;" class="form-control" name="productDescription" rows="5" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                </div>
+                                                {{-- <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon2">Description</span>
                                                     <input type="text" class="form-control" name="productDescription" placeholder="Wow, oishi!" aria-label="productDescription" aria-describedby="basic-addon2">
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-auto">
                                                     <label for="productCategory" class="col-form-label mx-2">Category:</label>
                                                 </div>
