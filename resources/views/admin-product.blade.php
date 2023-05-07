@@ -109,8 +109,7 @@
                                     <td>{{$product->category->category}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>
-                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-description="{{$product->description}}" data-category="{{$product->category_id}}" data-price="{{$product->price}}">
-                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-description="{{$product->description}}" data-category="{{$product->category_id}}" data-price="{{$product->price}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
@@ -128,7 +127,7 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="description" class="form-label">Description</label>
-                                                                <textarea style="resize: none;" class="form-control" name="productDescription" id="editProductDescriptionText" rows="5" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                                <textarea style="resize: none;" class="form-control" name="productDescription" id="editProductDescriptionText" rows="5" placeholder="Wow, oishii!"></textarea>
                                                             </div>
                                                             {{-- <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon2">Description</span>
@@ -187,8 +186,7 @@
                                                 });
                                             });
                                         </script>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct" data-id="{{$product->id}}" data-name="{{$product->name}}">
-                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct" data-id="{{$product->id}}" data-name="{{$product->name}}"><i class="bi bi-trash"></i> Delete</button>
                                         <div class="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -251,7 +249,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="description" class="form-label">Description</label>
-                                                    <textarea style="resize: none;" class="form-control" name="productDescription" rows="5" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                                                    <textarea style="resize: none;" class="form-control" name="productDescription" rows="5" placeholder="Wow, oishii!"></textarea>
                                                 </div>
                                                 {{-- <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon2">Description</span>

@@ -107,8 +107,7 @@
                                     <td><img src="{{$new->img_src}}" class="img-fluid w-50" alt="News Image"></td>
                                     <td>{{$new->description}}</td>
                                     <td>
-                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editNews" data-id="{{$new->id}}" data-name="{{$new->title}}" data-description="{{$new->description}}">
-                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editNews" data-id="{{$new->id}}" data-name="{{$new->title}}" data-description="{{$new->description}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editNews" tabindex="-1" aria-labelledby="editNewsLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -155,8 +154,7 @@
                                                 });
                                             });
                                         </script>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNews" data-id="{{$new->id}}" data-name="{{$new->title}}">
-                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNews" data-id="{{$new->id}}" data-name="{{$new->title}}"><i class="bi bi-trash"></i> Delete</button>
                                         <div class="modal fade" id="deleteNews" tabindex="-1" aria-labelledby="deleteNewsLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

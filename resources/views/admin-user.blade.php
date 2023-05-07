@@ -107,8 +107,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->password}}</td>
                                     <td>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUser" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}">
-                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUser" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"><i class="bi bi-trash"></i> Delete</button>
                                         <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

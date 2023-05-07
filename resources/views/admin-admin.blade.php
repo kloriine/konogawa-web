@@ -107,8 +107,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->password}}</td>
                                     <td>
-                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}">
-                                            <i class="bi bi-pencil"></i> Edit</button>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editAdmin" tabindex="-1" aria-labelledby="editAdminLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -155,8 +154,7 @@
                                                 });
                                             });
                                         </script>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"> 
-                                            <i class="bi bi-trash"></i> Delete</button>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"> <i class="bi bi-trash"></i> Delete</button>
                                         <div class="modal fade" id="deleteAdmin" tabindex="-1" aria-labelledby="deleteAdminLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
