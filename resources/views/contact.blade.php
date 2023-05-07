@@ -75,14 +75,14 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <label for="subject" class="form-label">Subject</label>
+                                <label for="subject" class="form-label">Subject <span class="text-muted">(Required)</span></label>
                                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Title of your message" required>
                                 <div class="invalid-feedback">
                                     Please give your mail a subject.
                                 </div>
                             </div>
                             <div class="col-12">
-                                <label for="message" class="form-label">Message</label>
+                                <label for="message" class="form-label">Message <span class="text-muted">(Required)</span></label>
                                 <textarea style="resize:none;" class="form-control" name="message" id="message" rows="6" placeholder="Criticism, suggestions, or questions" required></textarea>
                                 <div class="invalid-feedback">
                                     Please type in your criticism, suggestions, or questions.
