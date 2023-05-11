@@ -23,5 +23,6 @@ use App\Http\Controllers\UserMobileController;
 Route::resource('products', ProductController::class);
 Route::group(['prefix' => 'account'], function () {
     Route::post('/login', [UserMobileController::class, 'login']);
-    Route::get('/logout', [UserMobileController::class, 'logout']);
+    Route::post('/register', [UserMobileController::class, 'register']);
+    Route::post('/logout', [UserMobileController::class, 'logout'])->middleware('auth:api');
 });
