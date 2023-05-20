@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-lg-5 mt-5">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-1.jpg')}}" alt="Mentai Series">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/mentai.jpg')}}" alt="Mentai Series">
                 </div>
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-4">Mentai Series / メンタイシリース</h2>
@@ -60,7 +60,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-5 order-lg-2 mt-5">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-2.jpg')}}" alt="Katsu Series">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/katsu-vacation.jpg')}}" alt="Katsu Series">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-3">Katsu Series / カツシリース</h2>
@@ -78,9 +78,9 @@
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row mt-5 mt-lg-0 pt-5 pt-lg-0">
-                <div class="col-lg-12 text-lg-center">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary">Rice Box / ライスボックス</h2>
+            <div class="row mt-5">
+                <div class="col-lg-12 text-lg-center mt-5">
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-0">Rice Box / ライスボックス</h2>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Chicken Kono Spicy</span><br>
                         ( Mysterious spice, dark, and bold. You will like this! )</p>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Chicken Teriyaki Sauce</span><br>
@@ -95,9 +95,9 @@
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row mt-lg-5">
+            <div class="row mt-5">
                 <div class="col-lg-5 mt-5 pt-lg-4">
-                    <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/menu-3.jpg')}}" alt="Snack">
+                    <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/snack-platter.jpg')}}" alt="Snack">
                 </div>
                 <div class="col-lg-7 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-0">Snack / スナック</h2>
@@ -122,11 +122,11 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-lg-5 order-lg-2 mt-5 pt-lg-3">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-4.jpg')}}" alt="Dessert">
+                <div class="col-lg-5 order-lg-2 mt-5">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/cheerful-dango.jpg')}}" alt="Dessert">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-3">Dessert / デザート</h2>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Dessert / デザート</h2>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Cheerful Dango</span><br>
                         ( Feels like you're taking a walk in a Japanese festival )</p>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Mitarashi Dango</span><br>
@@ -141,12 +141,12 @@
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row mt-lg-5">
+            <div class="row mt-5">
                 <div class="col-lg-5 mt-5">
-                    <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/menu-5.jpg')}}" alt="Coffee Based">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/split-shot.jpg')}}" alt="Coffee Based">
                 </div>
                 <div class="col-lg-7 mt-5 mt-lg-4">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Coffee Based / コーヒーベースー</h2>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-1">Coffee Based / コーヒーベースー</h2>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Americano</span><br>
                         ( Hot Water, Espresso )</p>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Cafe Latte</span><br>
@@ -166,8 +166,8 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-lg-5 order-lg-2 mt-5 mt-lg-0 pt-lg-5">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-6.jpg')}}" alt="Latte and Friends">
+                <div class="col-lg-5 order-lg-2 mt-5">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/caramel-latte.jpg')}}" alt="Latte and Friends">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
                     <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Latte and Friends / ラテと友達</h2>
@@ -185,12 +185,12 @@
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-5 mt-5 pt-lg-4">
-                    <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/menu-7.jpg')}}" alt="Coffee For Another Day">
+            <div class="row mt-5">
+                <div class="col-lg-5 mt-5">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/red-velvet.jpg')}}" alt="Coffee For Another Day">
                 </div>
                 <div class="col-lg-7 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5 pt-lg-4">Coffee For Another Day / 別の日のコーヒー</h2>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-0">Coffee For Another Day / 別の日のコーヒー</h2>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Hojicha</span><br>
                         ( Milk, Roasted Green Tea )</p>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Matcha</span><br>
@@ -199,7 +199,8 @@
                         ( Chocolate, Milk )</p>
                     <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Red Velvet</span><br>
                         ( Milk, Flavoured Cake )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Babycino</span><br></p>
+                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Babycino</span><br>
+                        ( Steamed Milk With Chocolate Powder On Top )</p>
                     {{-- @foreach ($category8 as $category8)
                         <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category8->name}}</span><br>
                             ( {{$category8->description}} )</p>
@@ -208,53 +209,38 @@
             </div>
             <div class="row mt-5">
                 <div class="col-lg-5 order-lg-2 mt-5">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-8.jpg')}}" alt="Manual Brew">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/tea-raichi.jpg')}}" alt="Don't Spill It">
                 </div>
                 <div class="col-lg-7 order-lg-1 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary">Manual Brew / 手動醸造</h2>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Blue Label</span><br></p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Green Label</span><br></p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Red Label</span><br></p>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary">Don't Spill It / こぼさないでください</h2>
+                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Remon Tea</span><br>
+                        ( Classic tea with homemade honey-lemon mixture, garnished with lemon slice )</p>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Raichi Tea</span><br>
+                        ( Classic lychee tea )</p>
                     {{-- @foreach ($category9 as $category9)
                         <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category9->name}}</span><br>
                     @endforeach --}}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-lg-5 mt-5">
-                    <img style="border-radius: 10%" class="img-fluid mt-5" width="500" height="500" src="{{url('/images/menu-9.jpg')}}" alt="Don't Spill It">
+                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/osaka-red-district.jpg')}}" alt="Konogawa Special Signature">
                 </div>
                 <div class="col-lg-7 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary pt-lg-5">Don't Spill It / こぼさないでください</h2>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Remon Tea</span><br>
-                    ( Classic tea with homemade honey-lemon mixture, garnished with lemon slice )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Raichi Tea</span><br>
-                    ( Classic lychee tea )</p>
+                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-4">Konogawa Special Signature</h2>
+                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Kono-Ice Coffee</span><br>
+                        ( Special Recipe for You )</p>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Gawa-Ice Coffee</span><br>
+                        ( Special Recipe for Sweet Tooth )</p>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Osaka Red District</span><br>
+                        ( Rosella, Based with Milk )</p>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Pikotaro Boost</span><br>
+                        ( Out Special Coffee Mocktail )</p>
+                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">???</span><br>
+                        ( Mysterious Drink )</p>
                     {{-- @foreach ($category10 as $category10)
                         <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category10->name}}</span><br>
                             ( {{$category10->description}} )</p>
-                    @endforeach --}}
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-5 order-lg-2 mt-5 pt-lg-4">
-                    <img style="border-radius: 10%" class="img-fluid" width="500" height="500" src="{{url('/images/menu-10.jpg')}}" alt="Konogawa Special Signature">
-                </div>
-                <div class="col-lg-7 order-lg-1 mt-5">
-                    <h2 class="featurette-heading fw-normal lh-1 text-primary mt-lg-5">Konogawa Special Signature</h2>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Kono-Ice Coffee</span><br>
-                    ( Special Recipe for You )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Gawa-Ice Coffee</span><br>
-                    ( Special Recipe for Sweet Tooth )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Osaka Red District</span><br>
-                    ( Rosella, Based with Milk )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">Pikotaro Boost</span><br>
-                    ( Out Special Coffee Mocktail )</p>
-                    <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">???</span><br>
-                    ( Mysterious Drink )</p>
-                    {{-- @foreach ($category11 as $category11)
-                        <p class="lead fs-5 ms-1"><span class="fw-bold fs-4">{{$category11->name}}</span><br>
-                            ( {{$category11->description}} )</p>
                     @endforeach --}}
                 </div>
             </div>
