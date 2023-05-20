@@ -75,7 +75,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{url('/images/card-food.jpg')}}" class="card-img-top" alt="Makanan">
+                            <img src="{{url('/images/katsu-original.jpg')}}" class="card-img-top" alt="Foods">
                             <div class="card-body mx-auto">
                                 <h5 class="card-title">Freshly-cooked Dish</h5>
                             </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{url('/images/card-snacks.jpg')}}" class="card-img-top" alt="Snacks">
+                            <img src="{{url('/images/mini-platter.jpg')}}" class="card-img-top" alt="Snacks">
                             <div class="card-body mx-auto">
                                 <h5 class="card-title">Multiple Snacks</h5>
                             </div>
