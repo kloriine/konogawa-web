@@ -44,7 +44,7 @@
         <div class="container-fluid">
             <div class="container text-center mb-5">
                 <h2 class="featurette-heading fw-normal lh-1 mt-5 text-primary">News Center</h2>
-                <p class="lead fs-4">Read our post to catch up with us!</p>
+                <p class="lead fs-4 fw-normal">Read our post to catch up with us!</p>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach ($news as $new)
