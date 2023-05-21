@@ -20,7 +20,7 @@ use App\Http\Controllers\UserMobileController;
 //     return $request->user();
 // });
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->middleware('auth:api');
 Route::group(['prefix' => 'account'], function () {
     Route::post('/login', [UserMobileController::class, 'login']);
     Route::post('/register', [UserMobileController::class, 'register']);
