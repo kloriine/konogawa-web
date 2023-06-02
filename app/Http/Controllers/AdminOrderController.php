@@ -10,7 +10,7 @@ class AdminOrderController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $receipts = Receipt::paginate(10);
+        $receipts = Receipt::orderByDesc('created_at')->paginate(10);
         return view('admin-order', ['receipts' => $receipts]);
     }
 
