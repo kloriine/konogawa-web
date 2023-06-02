@@ -61,13 +61,13 @@ class OrderController extends Controller
 
             if ($latestOrder) {
                 $orderedItems = '';
+                $latestCreatedAt = Order::where('user_id', $userId)
+                    ->max('created_at');
+
                 $orders = Order::join('products', 'orders.product_id', '=', 'products.id')
                     ->select('products.name', DB::raw('COUNT(orders.product_id) as quantity'))
-                    ->join(DB::raw('(SELECT product_id, MAX(created_at) as latest_created_at FROM orders WHERE user_id = ' . $userId . ' GROUP BY product_id) latest_orders'), function ($join) {
-                        $join->on('orders.product_id', '=', 'latest_orders.product_id')
-                            ->on('orders.created_at', '=', 'latest_orders.latest_created_at');
-                    })
                     ->where('orders.user_id', $userId)
+                    ->where('orders.created_at', $latestCreatedAt)
                     ->groupBy('products.name')
                     ->get();
 
