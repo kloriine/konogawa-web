@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5 order-lg-2 mb-5">
-                    <form action="{{route('contact.send')}}" method="POST" class="needs-validation" novalidate>
+                    <form action="{{route('contact.store')}}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="row g-3">
                             <div class="col-12">
