@@ -79,6 +79,13 @@
                                     Admin
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/contact">
+                                    <i class="bi bi-envelope-paper"></i>
+                                    <span class="align-text-bottom"></span>
+                                    Contact Us Message
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

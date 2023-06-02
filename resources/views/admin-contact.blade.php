@@ -38,11 +38,11 @@
                         <h4 class="text-center fw-bold">Menu</h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/order">
-                                    <i class="bi bi-cart"></i>
-                                    <span class="align-text-bottom"></span>
-                                    Order
-                                </a>
+                              <a class="nav-link" href="/admin/order">
+                                  <i class="bi bi-cart"></i>
+                                  <span class="align-text-bottom"></span>
+                                  Order
+                              </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/category">
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
+                                <a class="nav-link" href="/admin/user">
                                     <i class="bi bi-people"></i>
                                     <span class="align-text-bottom"></span>
                                     User
@@ -80,18 +80,18 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/contact">
-                                    <i class="bi bi-envelope-paper"></i>
-                                    <span class="align-text-bottom"></span>
-                                    Contact Us Message
-                                </a>
-                            </li>
+                              <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
+                                  <i class="bi bi-envelope-paper"></i>
+                                  <span class="align-text-bottom"></span>
+                                  Contact Us Message
+                              </a>
+                          </li>
                         </ul>
                     </div>
                 </nav>
                 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <h1 class="h2">Manage Users</h1>
+                        <h1 class="h2">Manage Messages</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
@@ -100,32 +100,34 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Message</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $count = 1; ?>
-                                @foreach ($users as $user)
+                                @foreach ($contactFormsData as $contactFormData)
                                 <tr>
-                                    <td>{{$users->perPage()*($users->currentPage()-1)+$count}}</td>
+                                    <td>{{$contactFormsData->perPage()*($contactFormsData->currentPage()-1)+$count}}</td>
                                     <?php $count++; ?>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->password}}</td>
+                                    <td>{{$contactFormData->name}}</td>
+                                    <td>{{$contactFormData->email}}</td>
+                                    <td>{{$contactFormData->subject}}</td>
+                                    <td>{{$contactFormData->message}}</td>
                                     <td>
-                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUser" data-id="{{$user->id}}" data-name="{{$user->name}}" data-email="{{$user->email}}"><i class="bi bi-trash"></i> Delete</button>
-                                        <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteContactForm" data-id="{{$contactFormData->id}}"><i class="bi bi-trash"></i> Delete</button>
+                                        <div class="modal fade" id="deleteContactForm" tabindex="-1" aria-labelledby="deleteContactFormLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="deleteUserLabel">Delete an Existing User</h1>
+                                                        <h1 class="modal-title fs-5" id="deleteContactFormLabel">Delete Message Data</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form id="deleteFormUser" action="{{ route('user.delete', '') }}" method="GET">
+                                                    <form id="deleteContactFormOrder" action="{{ route('admin.contact.delete', '') }}" method="GET">
                                                         @csrf
                                                         <div class="modal-body">
-                                                            <p id="deleteUserText"></p>
+                                                            <p id="deleteContactFormText">You are about to delete one contact form message from the list!</p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">Confirm</button>
@@ -136,18 +138,10 @@
                                         </div>
                                         <script>
                                             $(document).on('click', '.deleteButton', function () {
-                                                var userId = $(this).data('id');
-                                                var userName = $(this).data('name');
-                                                var userEmail = $(this).data('email');
-                                                $('#deleteUserText').html(function () {
-                                                    var text = 'You are about to delete user called <b>:A</b> with the email of <b>:B</b> from the list!'
-                                                    text = text.replace(':A', userName);
-                                                    text = text.replace(':B', userEmail);
-                                                    $(this).html(text);
-                                                });
-                                                $('#deleteFormUser').submit(function () {
-                                                    var action = '{{ route('user.delete', ':id') }}';
-                                                    action = action.replace(':id', userId);
+                                                var contactFormID = $(this).data('id');
+                                                $('#deleteContactFormOrder').submit(function () {
+                                                    var action = '{{ route('admin.contact.delete', ':id') }}';
+                                                    action = action.replace(':id', contactFormID);
                                                     $(this).attr('action', action);
                                                 });
                                             });
@@ -159,45 +153,11 @@
                         </table>
                     </div>
                     <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i class="bi bi-plus"></i> Create New User</button>
-                        </div>
-                        <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="addUserLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="addUserLabel">Add New User</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="{{ route('user.store') }}" method="POST">
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="row g-3 align-items-center">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon1">Name</span>
-                                                    <input type="text" class="form-control" name="userName" placeholder="John Doe" aria-label="userName" aria-describedby="basic-addon1" required>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon2">Email</span>
-                                                    <input type="email" class="form-control" name="userEmail" placeholder="johndoe@gmail.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="basic-addon3">Password</span>
-                                                    <input type="password" class="form-control" name="userPassword" placeholder="" aria-label="userPassword" aria-describedby="basic-addon3" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Add</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-4">
-                            {{$users->links()}}
-                        </div>
-                    </div>
+                      <div class="col-lg-6"></div>
+                      <div class="col-lg-6 mt-4">
+                          {{$contactFormsData->links()}}
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>

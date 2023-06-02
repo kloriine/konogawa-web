@@ -7,6 +7,7 @@
     <title>Admin Panel - Konogawa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 </head>
 <body>
@@ -78,6 +79,13 @@
                                     Admin
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/contact">
+                                    <i class="bi bi-envelope-paper"></i>
+                                    <span class="align-text-bottom"></span>
+                                    Contact Us Message
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -91,48 +99,125 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Items Ordered</th>
-                                    <th scope="col">Total</th>
+                                    <th scope="col">Ordered Items</th>
+                                    <th scope="col">Total Price</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $count = 1; ?>
+                                @foreach ($receipts as $receipt)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Ahlul</td>
-                                    <td>Chicken Katsu In Vacation</td>
-                                    <td>35000</td>
-                                    <td>Done</td>
+                                    <td>{{$receipts->perPage()*($receipts->currentPage()-1)+$count}}</td>
+                                    <?php $count++; ?>
+                                    <td>{{$receipt->user_name}}</td>
+                                    <td>{{$receipt->ordered_items}}</td>
+                                    <td>{{$receipt->total_price}}</td>
+                                    <td>{{$receipt->status}}</td>
                                     <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
+                                        <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrder" data-id="{{$receipt->id}}" data-name="{{$receipt->user_name}}" data-ordereditems="{{$receipt->ordered_items}}" data-status="{{$receipt->status}}" data-price="{{$receipt->total_price}}"><i class="bi bi-pencil"></i> Edit</button>
+                                        <div class="modal fade" id="editOrder" tabindex="-1" aria-labelledby="editOrderLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="editOrderLabel">Edit an Existing Order</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form id="editFormOrder" action="{{ route('admin.order.edit', '') }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="row g-3 align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1">Name</span>
+                                                                <input type="text" id="editOrderNameText" class="form-control" name="orderName" placeholder="Something" aria-label="orderName" aria-describedby="basic-addon1" readonly>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="description" class="form-label">Ordered Items</label>
+                                                                <textarea style="resize: none;" class="form-control" name="orderedItems" id="editOrderDescriptionText" rows="5" placeholder="!" readonly></textarea>
+                                                            </div>
+                                                            <div class="input-group mb-3 mt-4">
+                                                                <span class="input-group-text" id="basic-addon3">Total Price</span>
+                                                                <input type="number" id="editOrderPriceText" class="form-control" name="orderTotalPrice" placeholder="25000" aria-label="orderTotalPrice" aria-describedby="basic-addon3" readonly>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <label for="orderStatus" class="col-form-label mx-2">Status:</label>
+                                                            </div>
+                                                            <div class="col-9 ms-auto">
+                                                                <select id="orderStatus" name="orderStatus" class="form-select" aria-label="Select status" required>
+                                                                    <option value="Unconfirmed">Unconfirmed</option>
+                                                                    <option value="Processed">Processed</option>
+                                                                    <option value="Done">Done</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </div>
+                                                </form>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.editButton', function () {
+                                                var orderId = $(this).data('id');
+                                                var orderName = $(this).data('name');
+                                                var orderedItems = $(this).data('ordereditems');
+                                                var orderStatus = $(this).data('status');
+                                                var orderPrice = $(this).data('price');
+                                                $('.modal-body #editOrderNameText').val(orderName);
+                                                $('.modal-body #editOrderDescriptionText').val(orderedItems);
+                                                $('.modal-body #orderStatus').val(orderStatus).change();
+                                                $('.modal-body #editOrderPriceText').val(orderPrice);
+                                                $('#editFormOrder').submit(function () {
+                                                    var action = '{{ route('admin.order.edit', ':id') }}';
+                                                    action = action.replace(':id', orderId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
+                                        <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteOrder" data-id="{{$receipt->id}}" data-number="{{$count-1}}"><i class="bi bi-trash"></i> Delete</button>
+                                        <div class="modal fade" id="deleteOrder" tabindex="-1" aria-labelledby="deleteOrderLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteOrderLabel">Delete Customer Order</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form id="deleteFormOrder" action="{{ route('admin.order.delete', '') }}" method="GET">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <p id="deleteOrderText">You are about to delete one order data from the list!</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).on('click', '.deleteButton', function () {
+                                                var orderId = $(this).data('id');
+                                                $('#deleteFormOrder').submit(function () {
+                                                    var action = '{{ route('admin.order.delete', ':id') }}';
+                                                    action = action.replace(':id', orderId);
+                                                    $(this).attr('action', action);
+                                                });
+                                            });
+                                        </script>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Puguh</td>
-                                    <td>Americano</td>
-                                    <td>24000</td>
-                                    <td>Done</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td>Red Velvet</td>
-                                    <td>25000</td>
-                                    <td>Ongoing</td>
-                                    <td>
-                                        <a class="btn btn-warning" href="#" role="button"><i class="bi bi-pencil"></i> Edit</a>
-                                        <a class="btn btn-danger" href="#" role="button"><i class="bi bi-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6 mt-4">
+                            {{$receipts->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
