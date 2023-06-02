@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminAdminController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminContactFormController;
 use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
@@ -34,7 +36,7 @@ Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/news', [NewsController::class, 'index']);
 
 Route::get('/contact-us', [ContactUsFormController::class, 'index']);
-Route::post('/contact-us', [ContactUsFormController::class, 'sendMail'])->name('contact.send');
+Route::post('/contact-us', [ContactUsFormController::class, 'store'])->name('contact.store');
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Route::post('/login', [LoginController::class, 'authenticate']);
@@ -65,9 +67,9 @@ Route::redirect('/admin', '/admin/order')->name('admin');
 // });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/order', function () {
-        return view('admin-order');
-    });
+    Route::get('/admin/order', [AdminOrderController::class, 'index'])->name('admin.order.index');
+    Route::post('/admin/order/{id}', [AdminOrderController::class, 'edit'])->name('admin.order.edit');
+    Route::get('/admin/order/{id}', [AdminOrderController::class, 'destroy'])->name('admin.order.delete');
     
     Route::get('/admin/category', [AdminCategoryController::class, 'index'])->name('category.index');
     Route::post('/admin/category', [AdminCategoryController::class, 'store'])->name('category.store');
@@ -92,4 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/admin', [AdminAdminController::class, 'store'])->name('admin.store');
     Route::post('/admin/admin/{id}', [AdminAdminController::class, 'edit'])->name('admin.edit');
     Route::get('/admin/admin/{id}', [AdminAdminController::class, 'destroy'])->name('admin.delete');
+
+    Route::get('/admin/contact', [AdminContactFormController::class, 'index'])->name('admin.contact.index');
+    Route::get('/admin/contact/{id}', [AdminContactFormController::class, 'destroy'])->name('admin.contact.delete');
 });
