@@ -9,7 +9,7 @@ class AdminContactFormController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $contactFormsData = ContactForm::paginate(10);
+        $contactFormsData = ContactForm::orderByDesc('created_at')->paginate(10);
         return view('admin-contact', ['contactFormsData' => $contactFormsData]);
     }
 

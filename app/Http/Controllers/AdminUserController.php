@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -12,7 +10,7 @@ class AdminUserController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $users = User::where('role_id', 2)->paginate(10);
+        $users = User::where('role_id', 2)->orderByDesc('created_at')->paginate(10);
         return view('admin-user', ['users' => $users]);
     }
 

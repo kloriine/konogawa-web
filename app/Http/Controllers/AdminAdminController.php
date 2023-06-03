@@ -11,7 +11,7 @@ class AdminAdminController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $users = User::where('role_id', 1)->paginate(10);
+        $users = User::where('role_id', 1)->orderByDesc('created_at')->paginate(10);
         return view('admin-admin', ['users' => $users]);
     }
 

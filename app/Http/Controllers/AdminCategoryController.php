@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 
@@ -11,7 +10,7 @@ class AdminCategoryController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $categories = Category::paginate(10);
+        $categories = Category::orderByDesc('created_at')->paginate(10);
 
         return view('admin-category', ['categories' => $categories]);
     }

@@ -10,7 +10,7 @@ class AdminNewsController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $news = News::orderByDesc('created_at')->paginate(2);
+        $news = News::orderByDesc('created_at')->paginate(4);
         return view('admin-news', ['news' => $news]);
     }
 

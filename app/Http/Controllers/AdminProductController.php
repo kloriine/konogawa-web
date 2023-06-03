@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class AdminProductController extends Controller
 {
     public function index () {
         $user = Auth::user();
-        $products = Product::paginate(10);
+        $products = Product::orderByDesc('created_at')->paginate(10);
         $categories = Category::all();
         return view('admin-product', ['products' => $products, 'categories' => $categories]);
     }
