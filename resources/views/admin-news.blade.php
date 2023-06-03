@@ -83,7 +83,7 @@
                                 <a class="nav-link" href="/admin/contact">
                                     <i class="bi bi-envelope-paper"></i>
                                     <span class="align-text-bottom"></span>
-                                    Contact Us Message
+                                    Feedback
                                 </a>
                             </li>
                         </ul>
@@ -94,14 +94,15 @@
                         <h1 class="h2">Manage News</h1>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="col-0">No</th>
+                                    <th scope="col" class="col-0">Title</th>
+                                    <th scope="col" class="col-1">Image</th>
+                                    <th scope="col" class="col-0">Description</th>
+                                    <th scope="col" class="col-0">Time Created</th>
+                                    <th scope="col" class="col-0">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,6 +114,7 @@
                                     <td>{{$new->title}}</td>
                                     <td><img src="{{$new->img_src}}" class="img-fluid w-50" alt="News Image"></td>
                                     <td>{{$new->description}}</td>
+                                    <td>{{$new->created_at}}</td>
                                     <td>
                                         <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editNews" data-id="{{$new->id}}" data-name="{{$new->title}}" data-description="{{$new->description}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editNews" tabindex="-1" aria-labelledby="editNewsLabel" aria-hidden="true">
@@ -141,7 +143,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        <button type="submit" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
                                                     </div>
                                                 </form>
                                                 </div>
@@ -175,7 +177,7 @@
                                                             <p id="deleteNewsText"></p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -248,7 +250,7 @@
             </div>
         </div>
         <div style="width: 100%" class="container-fluid mt-5">
-            <footer class="d-flex flex-wrap justify-content-end py-3 my-4 border-top">
+            <footer class="d-flex flex-wrap justify-content-end pt-3 mt-4 border-top">
                 <ul class="col-md-4 justify-content-end d-flex">
                     <a href="/" class="link-primary">Back to Main Website</a>
                 </ul>

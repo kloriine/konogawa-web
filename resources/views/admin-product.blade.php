@@ -83,7 +83,7 @@
                                 <a class="nav-link" href="/admin/contact">
                                     <i class="bi bi-envelope-paper"></i>
                                     <span class="align-text-bottom"></span>
-                                    Contact Us Message
+                                    Feedback
                                 </a>
                             </li>
                         </ul>
@@ -94,7 +94,7 @@
                         <h1 class="h2">Manage Products</h1>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -102,6 +102,7 @@
                                     <th scope="col">Description</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Time Created</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -115,6 +116,7 @@
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->category->category}}</td>
                                     <td>{{$product->price}}</td>
+                                    <td>{{$product->created_at}}</td>
                                     <td>
                                         <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-description="{{$product->description}}" data-category="{{$product->category_id}}" data-price="{{$product->price}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
@@ -169,7 +171,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        <button type="submit" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
                                                     </div>
                                                 </form>
                                               </div>
@@ -207,7 +209,7 @@
                                                             <p id="deleteProductText"></p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -294,7 +296,7 @@
             </div>
         </div>
         <div style="width: 100%" class="container-fluid mt-5">
-            <footer class="d-flex flex-wrap justify-content-end py-3 my-4 border-top">
+            <footer class="d-flex flex-wrap justify-content-end pt-3 mt-4 border-top">
                 <ul class="col-md-4 justify-content-end d-flex">
                     <a href="/" class="link-primary">Back to Main Website</a>
                 </ul>

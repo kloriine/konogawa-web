@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url('css/style.css')}}">
+    <style>
+        .custom-disabled-input {
+            background-color: #e9ecef;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -83,7 +88,7 @@
                                 <a class="nav-link" href="/admin/contact">
                                     <i class="bi bi-envelope-paper"></i>
                                     <span class="align-text-bottom"></span>
-                                    Contact Us Message
+                                    Feedback
                                 </a>
                             </li>
                         </ul>
@@ -94,7 +99,7 @@
                         <h1 class="h2">Manage Orders</h1>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -102,6 +107,7 @@
                                     <th scope="col">Ordered Items</th>
                                     <th scope="col">Total Price</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Time Created</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -115,6 +121,7 @@
                                     <td>{{$receipt->ordered_items}}</td>
                                     <td>{{$receipt->total_price}}</td>
                                     <td>{{$receipt->status}}</td>
+                                    <td>{{$receipt->created_at}}</td>
                                     <td>
                                         <button type="button" class="editButton btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrder" data-id="{{$receipt->id}}" data-name="{{$receipt->user_name}}" data-ordereditems="{{$receipt->ordered_items}}" data-status="{{$receipt->status}}" data-price="{{$receipt->total_price}}"><i class="bi bi-pencil"></i> Edit</button>
                                         <div class="modal fade" id="editOrder" tabindex="-1" aria-labelledby="editOrderLabel" aria-hidden="true">
@@ -130,16 +137,16 @@
                                                         <div class="row g-3 align-items-center">
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon1">Name</span>
-                                                                <input type="text" id="editOrderNameText" class="form-control" name="orderName" placeholder="Something" aria-label="orderName" aria-describedby="basic-addon1" readonly>
+                                                                <input type="text" id="editOrderNameText" class="form-control custom-disabled-input" name="orderName" placeholder="Something" aria-label="orderName" aria-describedby="basic-addon1" readonly>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="description" class="form-label">Ordered Items</label>
-                                                                <textarea style="resize: none;" class="form-control" name="orderedItems" id="editOrderDescriptionText" rows="5" placeholder="!" readonly></textarea>
+                                                                <textarea style="resize: none;" class="form-control custom-disabled-input" name="orderedItems" id="editOrderDescriptionText" rows="5" placeholder="!" readonly></textarea>
                                                             </div>
                                                             <div class="input-group mb-3 mt-4">
                                                                 <span class="input-group-text" id="basic-addon3">Total Price</span>
-                                                                <input type="number" id="editOrderPriceText" class="form-control" name="orderTotalPrice" placeholder="25000" aria-label="orderTotalPrice" aria-describedby="basic-addon3" readonly>
-                                                            </div>
+                                                                <input type="number" id="editOrderPriceText" class="form-control custom-disabled-input" name="orderTotalPrice" placeholder="25000" aria-label="orderTotalPrice" aria-describedby="basic-addon3" readonly>
+                                                            </div>                                                       
                                                             <div class="col-auto">
                                                                 <label for="orderStatus" class="col-form-label mx-2">Status:</label>
                                                             </div>
@@ -153,7 +160,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                        <button type="submit" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</button>
                                                     </div>
                                                 </form>
                                               </div>
@@ -191,7 +198,7 @@
                                                             <p id="deleteOrderText">You are about to delete one order data from the list!</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -223,7 +230,7 @@
             </div>
         </div>
         <div style="width: 100%" class="container-fluid mt-5">
-            <footer class="d-flex flex-wrap justify-content-end py-3 my-4 border-top">
+            <footer class="d-flex flex-wrap justify-content-end pt-3 mt-4 border-top">
                 <ul class="col-md-4 justify-content-end d-flex">
                     <a href="/" class="link-primary">Back to Main Website</a>
                 </ul>

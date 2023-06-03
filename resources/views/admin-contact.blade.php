@@ -83,7 +83,7 @@
                               <a class="nav-link active" aria-current="page" style="color: var(--bs-blue)">
                                   <i class="bi bi-envelope-paper"></i>
                                   <span class="align-text-bottom"></span>
-                                  Contact Us Message
+                                  Feedback
                               </a>
                           </li>
                         </ul>
@@ -91,10 +91,10 @@
                 </nav>
                 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <h1 class="h2">Manage Messages</h1>
+                        <h1 class="h2">Manage Feedback</h1>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -102,6 +102,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Subject</th>
                                     <th scope="col">Message</th>
+                                    <th scope="col">Time Created</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -115,6 +116,7 @@
                                     <td>{{$contactFormData->email}}</td>
                                     <td>{{$contactFormData->subject}}</td>
                                     <td>{{$contactFormData->message}}</td>
+                                    <td>{{$contactFormData->created_at}}</td>
                                     <td>
                                         <button type="button" class="deleteButton btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteContactForm" data-id="{{$contactFormData->id}}"><i class="bi bi-trash"></i> Delete</button>
                                         <div class="modal fade" id="deleteContactForm" tabindex="-1" aria-labelledby="deleteContactFormLabel" aria-hidden="true">
@@ -127,10 +129,10 @@
                                                     <form id="deleteContactFormOrder" action="{{ route('admin.contact.delete', '') }}" method="GET">
                                                         @csrf
                                                         <div class="modal-body">
-                                                            <p id="deleteContactFormText">You are about to delete one contact form message from the list!</p>
+                                                            <p id="deleteContactFormText">You are about to delete a customer precious feedback!</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -162,7 +164,7 @@
             </div>
         </div>
         <div style="width: 100%" class="container-fluid mt-5">
-            <footer class="d-flex flex-wrap justify-content-end py-3 my-4 border-top">
+            <footer class="d-flex flex-wrap justify-content-end pt-3 mt-4 border-top">
                 <ul class="col-md-4 justify-content-end d-flex">
                     <a href="/" class="link-primary">Back to Main Website</a>
                 </ul>
