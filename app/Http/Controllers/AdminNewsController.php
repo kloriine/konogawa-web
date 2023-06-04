@@ -17,15 +17,17 @@ class AdminNewsController extends Controller
     public function store (Request $request) {
         $this->validate(request(), [
             'newsTitle' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'required|mimes:jpeg,png,jpg',
             'newsDescription' => 'required',
         ]);
 
+        $userID = Auth::id();
         $file = $request->file('image');
         $imageName = $file->getClientOriginalName();
         $request->image->move(public_path('images'), $imageName);
 
         $news = new News();
+        $news->user_id = $userID;
         $news->img_src = '/images'.'/'.$imageName;
         $news->title = request('newsTitle');
         $news->description = request('newsDescription');
@@ -45,7 +47,10 @@ class AdminNewsController extends Controller
             'newsDescription' => 'required',
         ]);
 
+        $userID = Auth::id();
+
         $data = array(
+            'user_id' => $userID,
             'title' => $request->input('newsTitle'),
             'description' => $request->input('newsDescription'),
         );
