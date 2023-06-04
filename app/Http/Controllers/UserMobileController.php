@@ -27,7 +27,7 @@ class UserMobileController extends Controller
         }
     }
 
-    public function register(Request $request){
+    public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -51,7 +51,7 @@ class UserMobileController extends Controller
         ]);
     }
 
-    public function logout(){
+    public function logout() {
         if(Auth::user()){
             $user = Auth::user();
             $user->tokens()->delete();
@@ -67,24 +67,36 @@ class UserMobileController extends Controller
         }
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request) {
         $validator = Validator::make($request->all(), [
             'password' => ['required', 'string'],
-            'newPassword' => ['required', 'string'],
+            'newPassword' => ['required', 'string', 'different:password'],
             'confirmPassword' => ['required', 'same:newPassword'],
         ], [
-            'confirmPassword.same' => 'Your new password and confirm password does not match'
+            'newPassword.different' => 'Your current password and your new one cannot be the same',
+            'confirmPassword.same' => 'The new password and confirm password do not match',
         ]);
-        if($validator->fails()){
+    
+        if ($validator->fails()) {
             return response()->json([
-            'success' => false,
-            'message' => $validator->errors(),
+                'success' => false,
+                'message' => $validator->errors(),
             ], 401);
         }
+    
         $input = $request->all();
         $user = Auth::user();
+    
+        if (!Hash::check($input['password'], $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The current password is incorrect',
+            ], 401);
+        }
+    
         $user->password = Hash::make($input['newPassword']);
         $user->save();
+    
         return response()->json([
             'success' => true,
             'message' => 'Password changed successfully',
