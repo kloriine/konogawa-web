@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\OrderController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserMobileController;
@@ -27,4 +26,5 @@ Route::group(['prefix' => 'account'], function () {
     Route::post('/login', [UserMobileController::class, 'login']);
     Route::post('/register', [UserMobileController::class, 'register']);
     Route::post('/logout', [UserMobileController::class, 'logout'])->middleware('auth:api');
+    Route::post('/change-password', [UserMobileController::class, 'changePassword'])->middleware('auth:api');
 });

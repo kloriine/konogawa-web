@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,7 +28,7 @@ class UserMobileController extends Controller
     }
 
     public function register(Request $request){
-        $validator = FacadesValidator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string'],
@@ -65,5 +65,29 @@ class UserMobileController extends Controller
                 'message' => 'Unable to Logout',
             ]);
         }
-    }    
+    }
+
+    public function changePassword(Request $request){
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string'],
+            'newPassword' => ['required', 'string'],
+            'confirmPassword' => ['required', 'same:newPassword'],
+        ], [
+            'confirmPassword.same' => 'Your new password and confirm password does not match'
+        ]);
+        if($validator->fails()){
+            return response()->json([
+            'success' => false,
+            'message' => $validator->errors(),
+            ], 401);
+        }
+        $input = $request->all();
+        $user = Auth::user();
+        $user->password = Hash::make($input['newPassword']);
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Password changed successfully',
+        ]);
+    }
 }
