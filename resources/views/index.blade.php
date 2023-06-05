@@ -44,7 +44,7 @@
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{url('/images/konogawa-512.png')}}" alt="Konogawa">
+                    <img src="{{url('/images/konogawa-512.jpg')}}" alt="Konogawa">
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h1 class="fw-bold text-primary">コ ノ ガ ワ</h1>
