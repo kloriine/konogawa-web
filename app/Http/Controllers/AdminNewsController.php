@@ -24,7 +24,7 @@ class AdminNewsController extends Controller
         $userID = Auth::id();
         $file = $request->file('image');
         $imageName = $file->getClientOriginalName();
-        $request->image->move(public_path('images'), $imageName);
+        $request->image->move(base_path('public/images'), $imageName);
 
         $news = new News();
         $news->user_id = $userID;
@@ -64,14 +64,22 @@ class AdminNewsController extends Controller
         return back()->with($notification);
     }
 
-    public function destroy ($id) {
-        News::where('id', $id)->delete($id);
-
+    public function destroy($id) {
+        $news = News::find($id);
+        $imagePath = base_path('public') . $news->img_src;
+    
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    
+        $news->delete();
+    
         $notification = [
             'message' => 'News has been deleted successfully!',
             'alert-type' => 'info'
         ];
-
+    
         return back()->with($notification);
     }
+    
 }
