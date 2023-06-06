@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Receipt;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,13 +15,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        try {
-            $product = Order::get();
-            return $this->responseOK($product, 200);
-        } catch (\Throwable $th) {
-            // \Log::error($th->getMessage());
-            return $this->responseError("Internal Server Error", 500);
-        }
+        // try {
+        //     $product = Order::get();
+        //     return $this->responseOK($product, 200);
+        // } catch (\Throwable $th) {
+        //     // \Log::error($th->getMessage());
+        //     return $this->responseError("Internal Server Error", 500);
+        // }
     }
 
     /**
@@ -41,6 +42,25 @@ class OrderController extends Controller
 
             $orderData = $requestData['orderData'];
             $userId = $requestData['userId'];
+
+            $lastOrder = Order::where('user_id', $userId)
+                ->orderBy('created_at', 'desc')
+                ->first();
+        
+            if ($lastOrder) {
+                $currentTime = Carbon::now();
+                $nextOrderTime = $lastOrder->created_at->addSeconds(60);
+        
+                if ($currentTime < $nextOrderTime) {
+                    $remainingTime = $currentTime->diffInSeconds($nextOrderTime);
+        
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Please wait ' . $remainingTime . ' seconds before placing another order.',
+                    ], 400);
+                }
+            }
+            
 
             foreach ($orderData as $orderItem) {
                 $itemId = $orderItem['id'];
@@ -87,10 +107,16 @@ class OrderController extends Controller
                 $receipt->save();
             }
 
-            return $this->responseOK(null, 200);
+            return response()->json([
+                'success' => true,
+                'message' => 'Order placed successfully.',
+            ], 200);        
         } catch (\Throwable $th) {
             // \Log::error($th->getMessage());
-            return $this->responseError('Internal Server Error', 500);
+            return response()->json([
+                'success' => false,
+                'message' => 'Internal Server Error',
+            ], 500);
         }
     }
 
