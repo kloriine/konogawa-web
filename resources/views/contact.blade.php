@@ -70,8 +70,7 @@
                     </script>
                 @endif
             </div>
-            <div class="row">
-                <div class="col-lg-1"></div>
+            <div class="row justify-content-center">
                 <div class="col-lg-5 order-lg-2 mb-5">
                     <form action="{{route('contact.store')}}" method="POST" class="needs-validation" novalidate>
                         @csrf
