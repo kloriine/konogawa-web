@@ -12,8 +12,6 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $primaryKey = 'id';
-    
-    protected $dateFormat = 'Y-m-d H:i';
 
     protected $fillable = [
         'user_id',

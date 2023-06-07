@@ -13,8 +13,6 @@ class Receipt extends Model
 
     protected $primaryKey = 'id';
 
-    protected $dateFormat = 'Y-m-d H:i';
-
     protected $fillable = [
         'user_name',
         'ordered_items',
