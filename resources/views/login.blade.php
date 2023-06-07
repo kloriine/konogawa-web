@@ -66,7 +66,7 @@
         <div class="container mt-5">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <div class="col-md-4 d-flex align-items-center">
-                    <p>&copy; 2022 Konogawa. All rights reserved.</p>
+                    <p>&copy; 2023 Konogawa. All rights reserved.</p>
                 </div>
                 <ul class="col-md-4 justify-content-end d-flex">
                     <a href="/" class="link-primary">Back to Main Website</a>
