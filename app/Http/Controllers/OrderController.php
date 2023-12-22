@@ -43,13 +43,23 @@ class OrderController extends Controller
             $orderData = $requestData['orderData'];
             $userId = $requestData['userId'];
 
-            $lastOrder = Order::where('user_id', $userId)
+            function getLastOrderTimeForUser($userId) {
+                $lastOrder = Order::where('user_id', $userId)
                 ->orderBy('created_at', 'desc')
                 ->first();
+
+                if ($lastOrder) {
+                    return $lastOrder->created_at;
+                }
+
+                return null;
+            }
+
+            $lastOrderTime = getLastOrderTimeForUser($userId);
         
-            if ($lastOrder) {
+            if ($lastOrderTime !== null) {
                 $currentTime = Carbon::now();
-                $nextOrderTime = $lastOrder->created_at->addSeconds(60);
+                $nextOrderTime = $lastOrderTime->addSeconds(60);
         
                 if ($currentTime < $nextOrderTime) {
                     $remainingTime = $currentTime->diffInSeconds($nextOrderTime);
@@ -60,7 +70,6 @@ class OrderController extends Controller
                     ], 400);
                 }
             }
-            
 
             foreach ($orderData as $orderItem) {
                 $itemId = $orderItem['id'];
@@ -78,27 +87,33 @@ class OrderController extends Controller
                 ->groupBy('users.name', 'orders.created_at')
                 ->orderBy('orders.created_at', 'desc')
                 ->first();
-
+            
             if ($latestOrder) {
-                $orderedItems = '';
-                $latestCreatedAt = Order::where('user_id', $userId)
-                    ->max('created_at');
-
-                $orders = Order::join('products', 'orders.product_id', '=', 'products.id')
+                if ($lastOrderTime !== null) {
+                    $orders = Order::join('products', 'orders.product_id', '=', 'products.id')
                     ->select('products.name', DB::raw('COUNT(orders.product_id) as quantity'))
                     ->where('orders.user_id', $userId)
-                    ->where('orders.created_at', $latestCreatedAt)
+                    ->where('orders.created_at', '>', $lastOrderTime)
                     ->groupBy('products.name')
                     ->get();
+                } else {
+                    $orders = Order::join('products', 'orders.product_id', '=', 'products.id')
+                    ->select('products.name', DB::raw('COUNT(orders.product_id) as quantity'))
+                    ->where('orders.user_id', $userId)
+                    ->groupBy('products.name')
+                    ->get();
+                }
+            
+                $orderedItems = '';
 
                 foreach ($orders as $order) {
                     $orderedItems .= $order->name . ' (x' . $order->quantity . '), ';
                 }
-
+                
                 $orderedItems = rtrim($orderedItems, ', ');
-
+            
                 $finalPrice = $latestOrder->total_price + ($latestOrder->total_price * 0.10);
-
+            
                 $receipt = new Receipt();
                 $receipt->user_name = $latestOrder->user_name;
                 $receipt->ordered_items = $orderedItems;
@@ -110,7 +125,7 @@ class OrderController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Order placed successfully.',
-            ], 200);        
+            ], 200);
         } catch (\Throwable $th) {
             // \Log::error($th->getMessage());
             return response()->json([
