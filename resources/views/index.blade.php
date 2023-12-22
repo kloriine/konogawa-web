@@ -54,8 +54,8 @@
                 </div>
             </div>
         </div>
-        <div class="container marketing">
-            <div class="row featurette align-items-center pb-5">
+        <div class="container marketing pb-5">
+            <div class="row featurette align-items-center">
                 <div class="col-lg-7 order-md-2 mb-5 mb-sm-0">
                     <h2 class="featurette-heading fw-normal lh-1 mt-0 text-primary">Our Story</h2>
                     <p class="lead fs-4 fw-normal">Nestled in the heart of a bustling city, a cafe called "Konogawa" invites customers to escape the hustle and bustle of city life. The exterior of the cafe is adorned with crisp white awnings and blue accents, creating a clean and inviting atmosphere. The interior of the cafe is just as charming, with a blue and white color scheme that is inspired by traditional Japanese design. The walls are painted a soft white hue and adorned with lanterns. The seating area is filled with comfortable Ryokan-styled (Japanese Inn) dining area.</p>
@@ -107,9 +107,9 @@
             <h2 class="featurette-heading fw-normal lh-1 mt-5 text-primary">News</h2>
             <p class="lead fs-4 fw-normal">Find out the latest information about our place.</p>
             @foreach ($news as $new)
-                <div class="row mt-5">
+                <div class="row mt-5 align-items-center">
                     <div class="col-md-8 col-lg-9 col-xl-10 order-2">
-                        <p class="fw-bold pt-xxl-4 fs-4">{{$new->title}}</p>
+                        <p class="fw-bold fs-4">{{$new->title}}</p>
                         <p class="fw-normal fs-5">{{$new->description}}</p>
                     </div>
                     <div class="col-md-4 col-lg-3 col-xl-2 order-1">
